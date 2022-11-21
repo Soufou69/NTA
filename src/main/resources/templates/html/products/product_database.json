@@ -1,0 +1,221 @@
+
+{
+  "products": {
+      "stockCG": [
+    {
+      "id": "90YV0FD1-M0NM00",
+      "stock": 60,
+      "title":  "Asus GeForce RTX 3090 TUF O24G GAMING",
+      "ref": "Réf ASUS : 90YV0FD1-M0NM00",
+      "price": 2769.99,
+      "img_src": "img/cg/3090.jpg",
+      "desc": [
+        "Carte graphique PCI-Express overclockée",
+        "Refroidissement semi-passif (mode 0 dB)",
+        "Avec backplate",
+        "Compatible VR"
+      ]
+    },
+    {
+      "id": "GEFORCERTX3080TISUPRIM",
+      "stock": 50,
+      "title":  "MSI GeForce RTX 3080 Ti SUPRIM X (LHR)",
+      "ref": "Réf MSI : GEFORCE RTX 3080 TI SUPRIM X 12G",
+      "price": 2399.99,
+      "img_src": "img/cg/3080Ti.jpg",
+      "desc": [
+        "Carte graphique PCI-Express overclockée",
+        "Refroidissement semi-passif (mode 0 dB)",
+        "Avec backplate",
+        "Compatible VR"
+      ]
+    },
+    {
+      "id": "NED307T019P2-1046A",
+      "stock": 50,
+      "title":  "Palit GeForce RTX 3070 Ti GamingPro (LHR)",
+      "ref": "Réf PALIT : NED307T019P2-1046A",
+      "price": 1250.99,
+      "img_src": "img/cg/3070Ti.jpg",
+      "desc": [
+        "Carte graphique PCI-Express",
+        "Refroidissement semi-passif (mode 0 dB)",
+        "Avec backplate",
+        "Compatible VR"
+      ]
+    },
+    {
+      "id": "90YV0FR9-M0NA00",
+      "stock": 50,
+      "title":  "Asus GeForce RTX 3070 ROG STRIX O8G WHITE GAMING V2",
+      "ref": "Réf ASUS : 90YV0FR9-M0NA00",
+      "price": 1129.99,
+      "img_src": "img/cg/3070.jpg",
+      "desc": [
+        "Carte graphique PCI-Express overclockée",
+        "Refroidissement semi-passif (mode 0 dB)",
+        "Avec backplate",
+        "Compatible VR"
+      ]
+    },
+    {
+      "id": "GEFORCERTX3060TI",
+      "stock": 50,
+      "title":  "MSI GeForce RTX 3060 Ti GAMING Z TRIO (LHR)",
+      "ref": "Réf MSI : GEFORCE RTX 3060 TI GAMING Z TRIO 8G LHR",
+      "price": 949.99,
+      "img_src": "img/cg/3060Ti.jpg",
+      "desc": [
+        "Carte graphique PCI-Express overclockée",
+        "Refroidissement semi-passif (mode 0 dB)",
+        "Avec backplate",
+        "Compatible VR"
+      ]
+    }
+  ],
+      "stockPROC": [
+    {
+      "id": "100-100000010WOF",
+      "stock": 150,
+      "title":  "AMD Ryzen Threadripper 3960X (3.8 GHz)",
+      "ref": "Réf AMD : 100-100000010WOF",
+      "price": 1549.99,
+      "img_src": "img/proc/RThreadripper3960X.jpg",
+      "desc": [
+        "Processeur Socket TRX4",
+        "24 coeurs",
+        "Cache 140 Mo",
+        "Ventirad non inclus"
+      ]
+    },
+    {
+      "id": "100-100000059WOF",
+      "stock": 150,
+      "title":  "AMD Ryzen 9 5950X (3.4 GHz)",
+      "ref": "Réf AMD : 100-100000059WOF",
+      "price": 869.99,
+      "img_src": "img/proc/R95950X.jpg",
+      "desc": [
+        "Processeur Socket AM4",
+        "16 coeurs",
+        "Cache 72 Mo",
+        "Vermeer"
+      ]
+    },
+    {
+      "id": "BX8071512900K",
+      "stock": 150,
+      "title":  "Intel Core i9-12900K (3.2 GHz)",
+      "ref": "Réf INTEL : BX8071512900K",
+      "price": 739.99,
+      "img_src": "img/proc/i912900K.jpg",
+      "desc": [
+        "Processeur Socket 1700",
+        "16 coeurs",
+        "Cache 30 Mo",
+        "Alder Lake"
+      ]
+    },
+    {
+      "id": "BX8070811900K",
+      "stock": 150,
+      "title":  "Intel Core i9-11900K (3.5 GHz)",
+      "ref": "Réf INTEL : BX8070811900K",
+      "price": 619.99,
+      "img_src": "img/proc/i911900K.jpg",
+      "desc": [
+        "Processeur Socket 1200",
+        "8 coeurs",
+        "Cache 16 Mo",
+        "Rocket Lake"
+      ]
+    },
+    {
+      "id": "BX8069510900X",
+      "stock": 150,
+      "title":  "Intel Core i9-10900X (3.7 GHz)",
+      "ref": "Réf INTEL : BX8069510900X",
+      "price": 729.99,
+      "img_src": "img/proc/i910900X.jpg",
+      "desc": [
+        "Processeur Socket 2066",
+        "10 coeurs",
+        "Cache 19.25 Mo",
+        "Cascade Lake X"
+      ]
+    }
+  ],
+      "stockRAM": [
+    {
+      "id": "CMT32GX5M2X6200C36",
+      "stock": 1000,
+      "title":  "DDR5 Corsair Dominator Platinum RGB - 32 Go",
+      "ref": "Réf CORSAIR : CMT32GX5M2X6200C36",
+      "price": 599.99,
+      "img_src": "img/ram/corsairDominatorDDR532.jpg",
+      "desc": [
+        "Mémoire DDR5",
+        "32 Go (2 x 16 Go)",
+        "Fréquence : 6200 MHz",
+        "PC-49600 - RGB - CAS 36"
+      ]
+    },
+    {
+      "id": "CMW256GX4M8E3200C16W",
+      "stock": 1000,
+      "title":  "DDR4 Corsair Vengeance RGB PRO - 256 Go",
+      "ref": "Réf CORSAIR : CMW256GX4M8E3200C16W",
+      "price": 2292.51,
+      "img_src": "img/ram/CorsairVengeanceDDR4256.jpg",
+      "desc": [
+        "Mémoire DDR4",
+        "256 Go (8 x 32 Go)",
+        "Fréquence : 3200 MHz",
+        "PC-25600 - LED RGB - CAS 16"
+      ]
+    },
+    {
+      "id": "F4-4000C18Q-128GTZR",
+      "stock": 1000,
+      "title":  "DDR4 G.Skill Trident Z RGB - 128 Go",
+      "ref": "Réf G.SKILL : F4-4000C18Q-128GTZR",
+      "price": 941.78,
+      "img_src": "img/ram/GSkillDDR4128.jpg",
+      "desc": [
+        "Mémoire DDR4",
+        "128 Go (4 x 32 Go)",
+        "Fréquence : 4000 MHz",
+        "PC-32000 - LED RGB - CAS 18"
+      ]
+    },
+    {
+      "id": "FXU8G1M3600C18X2",
+      "stock": 1000,
+      "title":  "DDR4 Fox Spirit AKURA RGB - 16 Go",
+      "ref": "Réf FOX SPIRIT : FXU8G1M3600C18X2",
+      "price": 99.99,
+      "img_src": "img/ram/FoxSpiritDDR416.jpg",
+      "desc": [
+        "Mémoire DDR4",
+        "16 Go (2 x 8 Go)",
+        "Fréquence : 3600 MHz",
+        "PC-28800 - LED RGB - CAS 18"
+      ]
+    },
+    {
+      "id": "KF432C16BBK2/16",
+      "stock": 1000,
+      "title":  "DDR4 Kingston Fury Beast - 16 Go",
+      "ref": "Réf KINGSTON : KF432C16BBK2/16",
+      "price": 94.99,
+      "img_src": "img/ram/kingstonDDR416.jpg",
+      "desc": [
+        "Mémoire DDR4",
+        "16 Go (2 x 8 Go)",
+        "Fréquence : 3200 MHz",
+        "PC-25600 - Low-Profile - CAS 16"
+      ]
+    }
+  ]
+}
+}
