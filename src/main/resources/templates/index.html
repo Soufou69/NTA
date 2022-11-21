@@ -5,21 +5,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 
-<header>
-    <nav id="head" class="nav-extended">
-        <div class="nav-wrapper">
-            <a href="index.php?page=index" class="brand-logo" style="margin-left: 20px;">Le Nouveau TopAchat</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="index.php?page=products">Nos produits</a></li>
-                <li><a href="index.php?page=user">Mon compte</a></li>
-                <li><a href="index.php?page=panier">Mon panier</a></li>
-                <li><a href="index.php?page=form">Contact</a></li>
-
-            </ul>
-        </div>
-    </nav>
-</header>
-
 <body>
 <main>
     <div class="container">
@@ -28,8 +13,8 @@
                 <div class="col s4 m12">
                     <div class="card">
                         <div class="card-image">
-                            <img th:src="@{../img/cg/3090.jpg}">
-                            <a href="index.php?page=products1" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">search</i></a>
+                            <img src="../static/img/cg/3090.jpg" th:src="@{img/cg/3090.jpg}">
+                            <a href="products?p=1" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">search</i></a>
                         </div>
                         <div class="card-content">
                             <span class="card-title">Nos Cartes Graphiques</span>
@@ -42,8 +27,8 @@
                 <div class="col s4 m12">
                     <div class="card">
                         <div class="card-image">
-                            <img th:src="@{../img/proc/RThreadripper3960X.jpg}">
-                            <a href="index.php?page=products2" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">search</i></a>
+                            <img src="../static/img/proc/RThreadripper3960X.jpg" th:src="@{img/proc/RThreadripper3960X.jpg}">
+                            <a href="products?p=2" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">search</i></a>
                         </div>
                         <div class="card-content" style="margin-top: 20px;">
                             <span class="card-title">Nos Processeurs</span>
@@ -56,8 +41,8 @@
                 <div class="col s4 m12">
                     <div class="card">
                         <div class="card-image">
-                            <img th:src="@{img/ram/corsairDominatorDDR532.jpg}">
-                            <a href="index.php?page=products3" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">search</i></a>
+                            <img src="../static/img/ram/corsairDominatorDDR532.jpg" th:src="@{img/ram/corsairDominatorDDR532.jpg}">
+                            <a href="products?p=3" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">search</i></a>
                         </div>
                         <div class="card-content">
                             <span class="card-title">Nos Mémoires RAM</span>
@@ -72,34 +57,10 @@
 
 </body>
 
-<footer class="page-footer">
-    <div class="container">
-        <div class="row">
-            <div class="col l6 s12">
-                <h5 class="white-text">Le Nouveau TopAchat</h5>
-                <p class="grey-text text-lighten-4">Toute ressemblance avec un site e-commerce existant est purement fortuite.</p>
-            </div>
-            <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Liens</h5>
-                <ul>
-                    <li><a class="grey-text text-lighten-3" href="index.php?page=index">Accueil</a></li>
-                    <li><a class="grey-text text-lighten-3" href="index.php?page=products">Nos produits</a></li>
-                    <li><a class="grey-text text-lighten-3" href="index.php?page=user">Mon Compte</a></li>
-                    <li><a class="grey-text text-lighten-3" href="index.php?page=form">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="footer-copyright">
-        <div class="container">
-            © 2022 Le Nouveau TopAchat
-        </div>
-    </div>
-</footer>
 
-<script type="text/javascript" src=""></script>
-<script type="text/javascript" src=""></script>
-<script type="text/javascript" src=""></script>
+<script type="text/javascript" src="../static/js/index.js" th:src="@{js/index.js}"></script>
+<script type="text/javascript" src="../static/js/initSelect.js" th:src="@{js/initSelect.js}"></script>
+<script type="text/javascript" src="../static/js/materialize.js" th:src="@{js/materialize.js}"></script>
 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
 
