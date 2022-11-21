@@ -1,67 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
     <title>Le Nouveau TopAchat</title>
+    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
-
 <body>
-<main>
-    <div class="container">
-        <div class="row">
-            <div class="col s4 main_page">
-                <div class="col s4 m12">
-                    <div class="card">
-                        <div class="card-image">
-                            <img src="../static/img/cg/3090.jpg" th:src="@{img/cg/3090.jpg}">
-                            <a href="products?p=1" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">search</i></a>
-                        </div>
-                        <div class="card-content">
-                            <span class="card-title">Nos Cartes Graphiques</span>
-                            <p>Découvre nos offres de cartes graphiques disponible.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col s4 main_page">
-                <div class="col s4 m12">
-                    <div class="card">
-                        <div class="card-image">
-                            <img src="../static/img/proc/RThreadripper3960X.jpg" th:src="@{img/proc/RThreadripper3960X.jpg}">
-                            <a href="products?p=2" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">search</i></a>
-                        </div>
-                        <div class="card-content" style="margin-top: 20px;">
-                            <span class="card-title">Nos Processeurs</span>
-                            <p>Découvre nos offres de processeurs disponible.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col s4 main_page">
-                <div class="col s4 m12">
-                    <div class="card">
-                        <div class="card-image">
-                            <img src="../static/img/ram/corsairDominatorDDR532.jpg" th:src="@{img/ram/corsairDominatorDDR532.jpg}">
-                            <a href="products?p=3" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">search</i></a>
-                        </div>
-                        <div class="card-content">
-                            <span class="card-title">Nos Mémoires RAM</span>
-                            <p>Découvre nos offres de mémoires RAM disponible.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</main>
+
+<div th:replace="html/header :: header"></div>
+<div th:replace="html/accueil :: div"></div>
+<div th:replace="html/footer :: footer"></div>
 
 </body>
-
-
-<script type="text/javascript" src="../static/js/index.js" th:src="@{js/index.js}"></script>
-<script type="text/javascript" src="../static/js/initSelect.js" th:src="@{js/initSelect.js}"></script>
-<script type="text/javascript" src="../static/js/materialize.js" th:src="@{js/materialize.js}"></script>
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-
-
 </html>
