@@ -14,16 +14,16 @@ public class ProductsController {
 
         switch (p) {
             case "1":
-                return "products1";
+                return "html/products/products1";
 
             case "2":
-                return "products2";
+                return "html/products/products2";
 
             case "3":
-                return "products3";
+                return "html/products/products3";
 
             default:
-                return "index";
+                return "html/products/index";
         }
 
     }
