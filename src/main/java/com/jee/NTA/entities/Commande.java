@@ -1,4 +1,4 @@
-package com.example.NTA.entities;
+package com.jee.NTA.entities;
 
 import javax.persistence.*;
 import java.util.List;
