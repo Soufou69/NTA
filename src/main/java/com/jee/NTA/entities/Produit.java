@@ -1,4 +1,4 @@
-package com.example.NTA.entities;
+package com.jee.NTA.entities;
 
 
 import javax.persistence.Entity;
@@ -11,7 +11,7 @@ public class Produit {
     @Id
     private int id;
     private typeProduit type;
-    private int price;
+    private float price;
     private String title;
     private int stock;
     private String ref;
