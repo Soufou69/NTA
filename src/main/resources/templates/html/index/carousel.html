@@ -1,0 +1,39 @@
+<div class="container-carousel">
+    <button class="carousel-button carousel-left" onclick="prevImage()"><</button>
+    <button class="carousel-button carousel-right" onclick="nextImage()">></button>
+    <div th:fragment="carousel" class="carousel">
+        <a class="carousel-item" href="#one!"><img src="https://media.topachat.com/media/s1000/63738add070d325eba271629.webp"></a>
+        <a class="carousel-item" href="#two!"><img src="https://media.topachat.com/media/s1000/6374e7fd8d4097270c5bae93.webp"></a>
+        <a class="carousel-item" href="#three!"><img src="https://media.topachat.com/media/s1000/63721ad0e632b26ae8081953.webp"></a>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.carousel');
+    var instances = M.Carousel.init(elems, {
+                                            fullWidth: true,
+                                            indicators: true,
+                                            noWrap : false
+                                           });
+    
+    //fck materizalize !
+    // Remove event listeners added by Materialize for corousel
+    document.getElementsByClassName("carousel")[0].removeEventListener('mousedown', instances[0]._handleCarouselTapBound);
+    document.getElementsByClassName("carousel")[0].removeEventListener('mousemove', instances[0]._handleCarouselDragBound);
+    document.getElementsByClassName("carousel")[0].removeEventListener('mouseup', instances[0]._handleCarouselReleaseBound);
+    document.getElementsByClassName("carousel")[0].removeEventListener('mouseleave', instances[0]._handleCarouselReleaseBound);
+    document.getElementsByClassName("carousel")[0].removeEventListener('click', instances[0]._handleCarouselClickBound);
+    instances[0].set(0);
+    });
+
+    function nextImage(){
+        var elem = document.querySelectorAll('.carousel')[0];
+        var instance = M.Carousel.getInstance(elem);
+        instance.next();
+    }
+    function prevImage(){
+        var elem = document.querySelectorAll('.carousel')[0];
+        var instance = M.Carousel.getInstance(elem);
+        instance.prev();
+    }
+</script>
