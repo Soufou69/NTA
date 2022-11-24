@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function hideStock(product_id) {
     const elmt = document.getElementById('product_' + product_id + '_price');
     const current_state = elmt.getAttribute('style').split(';')[0].split(':')[1];
+    console.log(current_state);
     if (current_state === ' none') {
         elmt.style.display = 'block';
     } else {
@@ -200,8 +201,6 @@ function changeQuantity(type, product_id, product_type) {
 function register() {
     document.getElementById("register_form").style.display = "block";
     document.getElementById("login_form").style.display = "none";
-
-
 }
 
 function logout() {
@@ -211,51 +210,4 @@ function logout() {
 
 }
 
-// Variable to hold request
-var request;
-
-
-
-var basketForm = document.querySelectorAll(".basket_form");
-
-
-basketForm.forEach(b => {
-    b.addEventListener("submit", function (event) {
-        event.preventDefault();
-
-        // Annule les anciennes requêtes
-    if (request) {
-        request.abort();
-    }
-
-    var $form = $(this);
-
-    var serializedData = $form.serialize();
-
-
-
-        request = $.ajax({
-        url: document.URL,
-        type: "post",
-        data: serializedData
-    });
-
-    request.done(function (response, textStatus, jqXHR){
-
-
-    });
-
-
-    request.fail(function (jqXHR, textStatus, errorThrown){
-
-        console.error(
-            "The following error occurred: "+
-            textStatus, errorThrown
-        );
-    });
-
-
-    });
-
-});
 
