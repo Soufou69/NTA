@@ -1,3 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Le Nouveau TopAchat</title>
+    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<div th:replace="~{html/inc/header}"></div>
+
 <div class="container" id="login_form" style="">
     <form action="" method="post">
         <div class="row center-align" id="user_box_1">
@@ -129,5 +143,9 @@
     </div>
     </div>
 
+<div th:replace="~{html/inc/footer}"></div>
 
+</body>
 <script type="text/javascript" src="js/user.js"></script>
+
+</html>
