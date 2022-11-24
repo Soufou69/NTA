@@ -1,6 +1,5 @@
 
 {
-  "products": {
       "stockCG": [
     {
       "id": "90YV0FD1-M0NM00",
@@ -117,5 +116,5 @@
       "stock": 1000
     }
   ]
-}
+
 }
