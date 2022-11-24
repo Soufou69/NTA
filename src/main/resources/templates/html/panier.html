@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>Votre panier</title>
+    </head>
+    <body>
+
+        <form method="post" action="">
+            <table class="responsive-table" style="width: 50%; margin-top: 150px; margin-bottom: 300px; margin-left: 150px;">
+                <tr>
+                    <td colspan="4">Votre panier</td>
+                </tr>
+                <tr>
+                    <td style="padding: 5px;">Libellé</td>
+                    <td style="padding: 25px;">Quantité</td>
+                    <td style="padding: 25px;">Prix Unitaire</td>
+                    <td style="padding: 25px;">Action</td>
+                </tr>
+    <!-- <?php for ($i=0 ;$i < $nbArticles ; $i++): ?> -->
+    <tr>
+        <td style="padding: 25px;">LIBELLE PRODUIT</td>
+        <td style="padding: 25px;"><input readonly type="text" size="4" value="1000" name="q[]"></td>
+        <td style="padding: 25px;">1000€</td>
+        <td style="padding: 25px;">
+<!--            <a type="submit" href="index.php?page=panier?action=suppression&l= ||| <?//=$_SESSION['panier']['libelleProduit'][$i]?>XX</a>-->
+            <button style="background-color: #006fac;" class="btn-floating waves-effect waves-light" name="delete_elmt">
+                <i class="material-icons right">delete</i>
+                <input type="hidden" name="delete_elmt_id" value=""/>
+            </button>
+        </td>
+    </tr>
+    <tr><td colspan="2"> </td>
+        <td style="padding: 25px;" colspan="2">Total  :  100000€</td>
+    </tr>
+    <tr>
+        <td colspan="4">
+            <button name="refresh_basket" style="background-color: #006fac;" class="btn waves-effect waves-light">Rafraichir
+            </button>
+        </td>
+        <td colspan="4">
+            <button name="delete_basket" style="background-color: #006fac;" class="btn waves-effect waves-light">Supprimer le panier
+            </button>
+        </td>
+
+    </tr>
+
+    </table>
+    </form>
+    </body>
+</html>
