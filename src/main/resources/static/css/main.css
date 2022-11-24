@@ -4,7 +4,9 @@
 
 .page-footer {
     background-color: #006fac !important;
-
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 
@@ -53,9 +55,9 @@ main {
     float: left;
 }
 
-.main_page {
+/*.main_page {
     margin-top: 50px;
-}
+}*/
 
 #user_box_1 {
     max-width: 350px; margin-top: 100px; margin-bottom: 100px;
@@ -140,4 +142,47 @@ main {
     .modal-content {
         width: 100%;
     }
+}
+
+
+/* Index Carousel  */
+.carousel {
+    min-height: auto !important;
+    width: 1000px !important;
+    border-radius: 10px;
+}
+.carousel-item {
+    width: auto !important;
+    height: auto !important;
+}
+.container-carousel {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    position: relative;
+    margin-bottom: 30px;
+}
+.carousel-button {
+    border-radius: 100%;
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    height: 40px;
+    width: 40px;
+    border: black solid 1px;
+    background: white;
+}
+.carousel-button:focus {
+    background-color: white !important;
+}
+.carousel-button:hover {
+    cursor: pointer;
+}
+.carousel-left {
+    left:10%;
+}
+.carousel-right {
+    right: 10%;
 }

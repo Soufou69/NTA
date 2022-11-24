@@ -201,8 +201,6 @@ function changeQuantity(type, product_id, product_type) {
 function register() {
     document.getElementById("register_form").style.display = "block";
     document.getElementById("login_form").style.display = "none";
-
-
 }
 
 function logout() {

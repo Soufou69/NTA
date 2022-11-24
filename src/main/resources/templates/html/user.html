@@ -1,95 +1,4 @@
-<?php
-
- $forms_login = 'block';
- $forms_register = 'none';
- $details = 'none';
- $error_msg = "";
-
-if (!isset($_SESSION['isConnected']))
-{
-
-    $forms_login = 'block';
-    $forms_register = 'none';
-    $details = 'none';
-}
-else {
-    if($_SESSION['isConnected']) {
-        $forms_login = 'none';
-        $forms_register = 'none';
-        $details = 'block';
-    } else {
-        $forms_login = 'block';
-        $forms_register = 'none';
-        $details = 'none';
-    }
-}
-
-
-if(isset($_POST['email_login'])){
-
-    $strJsonFileContents = file_get_contents("php/users_database.json");
-    $users = json_decode($strJsonFileContents, true); // show contents
-    $connectionState = false;
-
-    foreach ($users as $user) {
-        if ($user['email'] == $_POST['email_login'] and password_verify($_POST['password'], $user['password'])) {
-            $connectionState = true;
-            $_SESSION['isConnected'] = true;
-            $_SESSION['email']= $_POST['email_login'];
-
-        } else {
-            $connectionState = false;
-            $error_msg = "L'authentification a échouer, veuillez vérifier les informations et réeesayer !";
-            $_SESSION['isConnected'] = false;
-        }
-    }
-
-    if ($connectionState) {
-
-        $_SESSION['email']= $_POST['email_login'];
-        $forms_login = 'none';
-        $forms_register = 'none';
-        $details = 'block';
-    }
-
-
-} else if(isset($_POST['email_register'])){
-
-    if ($_POST['email_register'] == "" or $_POST['name'] == "" or $_POST['password'] = "") {
-        $error_msg = "Un problème de saisie des informations est survenue ! Pensez à vérifier les champs à remplir !";
-    } else {
-        $_SESSION['email']= $_POST['email_register'];
-
-        $strJsonFileContents = file_get_contents("php/users_database.json");
-        $tempArray = json_decode($strJsonFileContents, TRUE);
-        $pswd = password_hash($_POST['register_pwd'], PASSWORD_DEFAULT);
-        $tempArray[] = ['id' => session_id(), 'name' => $_POST['name'], 'email' => $_POST['email_register'], 'password' => $pswd];
-        $jsonData = json_encode($tempArray);
-        file_put_contents("php/users_database.json", $jsonData);
-    }
-
-
-
-}
-
-
-if (isset($_POST['action'])) {
-    switch ($_POST['action']) {
-        case 'logout':
-            session_destroy();
-            break;
-    }
-}
-
-if (isset($_POST['log_out'])) {
-    session_destroy();
-    $_SESSION['isConnected'] = false;
-}
-
-
-?>
-
-<div class="container" id="login_form" style="display: <?php echo($forms_login) ?>;">
+<div class="container" id="login_form" style="">
     <form action="" method="post">
         <div class="row center-align" id="user_box_1">
             <div class="col" id="user_box_2">
@@ -109,7 +18,7 @@ if (isset($_POST['log_out'])) {
                     </div>
                 </div>
                 <div class="row" >
-                    <p style="color: red;"><?=$error_msg?></p>
+                    <p style="color: red;">ERROR MSG HERE</p>
                 </div>
                 <div class="row" style="border-bottom: black 1px solid; padding: 10px 10px 20px;">
                     <div class="col offset-s2" style="padding: 0 !important;">
@@ -119,7 +28,7 @@ if (isset($_POST['log_out'])) {
                     </div>
                 </div>
     </form>
-                <div class="row" style="margin-bottom: 10px; !important;">
+                <div class="row" style="margin-bottom: 10px; ">
                     <div class="col" style="padding: 0 !important;">
                         <label style="display: block; margin-left: 40px;">Pas encore de compte ? Crée en un ici.</label>
                     </div>
@@ -133,7 +42,7 @@ if (isset($_POST['log_out'])) {
         </div>
     </div>
 
-<div class="container" id="register_form" style="display: <?php echo($forms_register) ?>;">
+<div class="container" id="register_form" style="display: none;">
     <form action="" method="post">
     <div class="row center-align" id="user_box_1">
         <div class="col" id="user_box_2">
@@ -159,12 +68,19 @@ if (isset($_POST['log_out'])) {
                 </div>
             </div>
             <div class="row" >
-                <p style="color: red;"><?=$error_msg?></p>
+                <p style="color: red;">ERROR MSG HERE</p>
             </div>
-            <div class="row" style="padding: 10px;">
+            <div class="row" style="border-bottom: black 1px solid; padding: 10px 10px 20px;">
                 <div class="col offset-s2" style="padding: 0 !important;">
                     <button style="background-color: #006fac;" class="btn waves-effect waves-light" onclick="register();" name="action">S'ENREGISTRER
                         <i class="material-icons right">person_add_alt</i>
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col offset-s2" style="padding: 0 !important;">
+                    <button type="button" style="background-color: #006fac;" class="btn waves-effect waves-light" onclick="showConnectionForm()">SE CONNECTER
+                        <i class="material-icons left">arrow_back</i>
                     </button>
                 </div>
             </div>
@@ -173,7 +89,7 @@ if (isset($_POST['log_out'])) {
         </form>
 </div>
 
-<div class="container" id="user_details" style="padding: 10px; display: <?php echo($details) ?>; margin-top: 100px; margin-bottom: 150px;">
+<div class="container" id="user_details" style="padding: 10px; margin-top: 100px; margin-bottom: 150px; display: none;">
         <div class="row center-align">
             <div class="col">
                 <div style="border-bottom: black 1px solid; padding: 10px;">
@@ -184,7 +100,7 @@ if (isset($_POST['log_out'])) {
         <div class="row center-align">
             <div class="col">
                 <div style="padding: 10px;">
-                    <h6>Mon adresse email :  <?=$_SESSION['email']?></h6>
+                    <h6>Mon adresse email :  Mon Email</h6>
                 </div>
             </div>
         </div>
@@ -214,4 +130,4 @@ if (isset($_POST['log_out'])) {
     </div>
 
 
-<script type="text/javascript" src="../js/test.js"></script>
+<script type="text/javascript" src="js/user.js"></script>
