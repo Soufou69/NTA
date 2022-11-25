@@ -6,7 +6,7 @@ import java.util.List;
 @Entity
 public class Commande {
     @Id
-    private int id;
+    private String id;
 
     @ManyToOne
     private User user;

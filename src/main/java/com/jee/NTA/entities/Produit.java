@@ -9,7 +9,7 @@ import java.util.List;
 @Entity
 public class Produit {
     @Id
-    private int id;
+    private String id;
     private typeProduit type;
     private float price;
     private String title;
