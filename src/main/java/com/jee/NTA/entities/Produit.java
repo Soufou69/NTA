@@ -9,9 +9,9 @@ import java.util.List;
 @Entity
 public class Produit {
     @Id
-    private int id;
+    private String id;
     private typeProduit type;
-    private int price;
+    private float price;
     private String title;
     private int stock;
     private String ref;

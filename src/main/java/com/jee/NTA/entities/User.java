@@ -8,7 +8,7 @@ import java.util.List;
 @Entity
 public class User {
     @Id
-    private int id;
+    private String id;
 
     private String name;
     private String password;
