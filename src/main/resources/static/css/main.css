@@ -4,9 +4,10 @@
 
 .page-footer {
     background-color: #006fac !important;
-    position: fixed;
+    /*position: fixed;*/
     bottom: 0;
     width: 100%;
+    flex-shrink: 0;
 }
 
 
