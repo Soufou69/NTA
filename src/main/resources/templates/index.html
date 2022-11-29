@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>Le Nouveau TopAchat</title>
@@ -11,8 +11,7 @@
 <body>
 
 <div th:replace="~{html/inc/header}"></div>
-<div th:switch="${page}">
-    <p th:case="ez">ez</p>
+<div style="min-height: 950px;" th:switch="${page}">
     <div th:case="account"><div th:replace="~{html/user}"></div></div>
     <div th:case="*"><div th:replace="~{html/accueil}"></div></div>
 </div>
