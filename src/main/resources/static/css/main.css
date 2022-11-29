@@ -4,13 +4,17 @@
 
 .page-footer {
     background-color: #006fac !important;
+    position: fixed;
+    bottom: 0;
     width: 100%;
 }
 
 
 
 body {
+    display: flex;
     min-height: 100vh;
+    flex-direction: column;
 }
 
 main {
@@ -140,14 +144,10 @@ main {
     }
 }
 
-/* all cards MUST have the same height or it will looked UGLY*/
-.card {
-    height: 450px !important;
-}
 
 /* Index Carousel  */
 .carousel {
-    height: 350px !important;
+    min-height: auto !important;
     width: 1000px !important;
     border-radius: 10px;
 }

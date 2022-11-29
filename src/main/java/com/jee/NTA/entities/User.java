@@ -12,18 +12,11 @@ public class User {
 
     private String name;
     private String password;
+    private String mail;
     private boolean isAdmin;
 
     @OneToMany
     private List<Commande> commandes;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -41,6 +34,14 @@ public class User {
         this.password = password;
     }
 
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
     public boolean isAdmin() {
         return isAdmin;
     }
@@ -55,5 +56,13 @@ public class User {
 
     public void setCommandes(List<Commande> commandes) {
         this.commandes = commandes;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
