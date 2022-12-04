@@ -1,4 +1,4 @@
-package com.jee.NTA.crud;
+package com.jee.NTA.entities;
 
 public class ContactForm {
 

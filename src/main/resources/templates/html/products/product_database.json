@@ -14,7 +14,8 @@
         "Refroidissement semi-passif (mode 0 dB)",
         "Avec backplate",
         "Compatible VR"
-      ]
+      ],
+      "type": "CG"
     },
     {
       "id": "GEFORCERTX3080TISUPRIM",
@@ -28,7 +29,8 @@
         "Refroidissement semi-passif (mode 0 dB)",
         "Avec backplate",
         "Compatible VR"
-      ]
+      ],
+      "type": "CG"
     },
     {
       "id": "NED307T019P2-1046A",
@@ -42,7 +44,8 @@
         "Refroidissement semi-passif (mode 0 dB)",
         "Avec backplate",
         "Compatible VR"
-      ]
+      ],
+      "type": "CG"
     },
     {
       "id": "90YV0FR9-M0NA00",
@@ -56,7 +59,8 @@
         "Refroidissement semi-passif (mode 0 dB)",
         "Avec backplate",
         "Compatible VR"
-      ]
+      ],
+      "type": "CG"
     },
     {
       "id": "GEFORCERTX3060TI",
@@ -70,7 +74,8 @@
         "Refroidissement semi-passif (mode 0 dB)",
         "Avec backplate",
         "Compatible VR"
-      ]
+      ],
+      "type": "CG"
     }
   ],
       "stockPROC": [
@@ -86,7 +91,8 @@
         "24 coeurs",
         "Cache 140 Mo",
         "Ventirad non inclus"
-      ]
+      ],
+      "type": "PROC"
     },
     {
       "id": "100-100000059WOF",
@@ -100,7 +106,8 @@
         "16 coeurs",
         "Cache 72 Mo",
         "Vermeer"
-      ]
+      ],
+      "type": "PROC"
     },
     {
       "id": "BX8071512900K",
@@ -114,7 +121,8 @@
         "16 coeurs",
         "Cache 30 Mo",
         "Alder Lake"
-      ]
+      ],
+      "type": "PROC"
     },
     {
       "id": "BX8070811900K",
@@ -128,7 +136,8 @@
         "8 coeurs",
         "Cache 16 Mo",
         "Rocket Lake"
-      ]
+      ],
+      "type": "PROC"
     },
     {
       "id": "BX8069510900X",
@@ -142,7 +151,8 @@
         "10 coeurs",
         "Cache 19.25 Mo",
         "Cascade Lake X"
-      ]
+      ],
+      "type": "PROC"
     }
   ],
       "stockRAM": [
@@ -158,7 +168,8 @@
         "32 Go (2 x 16 Go)",
         "Fréquence : 6200 MHz",
         "PC-49600 - RGB - CAS 36"
-      ]
+      ],
+      "type": "RAM"
     },
     {
       "id": "CMW256GX4M8E3200C16W",
@@ -172,7 +183,8 @@
         "256 Go (8 x 32 Go)",
         "Fréquence : 3200 MHz",
         "PC-25600 - LED RGB - CAS 16"
-      ]
+      ],
+      "type": "RAM"
     },
     {
       "id": "F4-4000C18Q-128GTZR",
@@ -186,7 +198,8 @@
         "128 Go (4 x 32 Go)",
         "Fréquence : 4000 MHz",
         "PC-32000 - LED RGB - CAS 18"
-      ]
+      ],
+      "type": "RAM"
     },
     {
       "id": "FXU8G1M3600C18X2",
@@ -200,7 +213,8 @@
         "16 Go (2 x 8 Go)",
         "Fréquence : 3600 MHz",
         "PC-28800 - LED RGB - CAS 18"
-      ]
+      ],
+      "type": "RAM"
     },
     {
       "id": "KF432C16BBK2/16",
@@ -214,7 +228,8 @@
         "16 Go (2 x 8 Go)",
         "Fréquence : 3200 MHz",
         "PC-25600 - Low-Profile - CAS 16"
-      ]
+      ],
+      "type": "RAM"
     }
   ]
 }

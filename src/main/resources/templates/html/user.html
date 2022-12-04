@@ -1,19 +1,10 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Le Nouveau TopAchat</title>
-    <link rel="stylesheet" href="css/main.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
+
 <body>
 
 <div th:replace="~{html/inc/header}"></div>
-
+<div th:if="${!#servletContext.getAttribute('user_logged')}">
 <div class="container" id="login_form" style="">
-    <form action="" method="post">
+    <form action="#" method="post" class="form" th:action="@{/login}">
         <div class="row center-align" id="user_box_1">
             <div class="col" id="user_box_2">
                 <div style="border-bottom: black 1px solid; padding: 10px;">
@@ -21,18 +12,18 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12" style=" padding: 10px;">
-                        <input name="email_login" id="email" type="email" class="validate">
-                        <label for="email">Email</label>
+                        <input name="login_mail" id="login_mail" type="email" class="validate">
+                        <label for="login_mail">Email</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12" style=" padding: 10px;">
-                        <input name="password" id="password" type="password" class="validate">
-                        <label for="password">Password</label>
+                        <input name="login_passwd" id="login_passwd" type="password" class="validate">
+                        <label for="login_passwd">Password</label>
                     </div>
                 </div>
-                <div class="row" >
-                    <p style="color: red;">ERROR MSG HERE</p>
+                <div th:if="${#servletContext.getAttribute('error') != null}" class="row" >
+                    <p th:text="${#servletContext.getAttribute('error')}" style="color: red;"></p>
                 </div>
                 <div class="row" style="border-bottom: black 1px solid; padding: 10px 10px 20px;">
                     <div class="col offset-s2" style="padding: 0 !important;">
@@ -41,7 +32,6 @@
                         </button>
                     </div>
                 </div>
-    </form>
                 <div class="row" style="margin-bottom: 10px; ">
                     <div class="col" style="padding: 0 !important;">
                         <label style="display: block; margin-left: 40px;">Pas encore de compte ? Crée en un ici.</label>
@@ -54,10 +44,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </form>
+</div>
+
 
 <div class="container" id="register_form" style="display: none;">
-    <form action="" method="post">
+    <form action="#" method="post" class="form" id="register_forms" th:action="@{/register}" th:object="${user_register}">
     <div class="row center-align" id="user_box_1">
         <div class="col" id="user_box_2">
             <div style="border-bottom: black 1px solid; padding: 10px;">
@@ -65,24 +57,24 @@
             </div>
             <div class="row">
                 <div class="input-field col s12" style=" padding: 10px;">
-                    <input id="name" name="name" type="text" class="validate">
+                    <input th:field="*{name}" id="name" name="name" type="text" class="validate">
                     <label for="name">Nom</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12" style=" padding: 10px;">
-                    <input id="email" name="email_register" type="email" class="validate">
+                    <input th:field="*{mail}" id="email" name="email_register" type="email" class="validate">
                     <label for="email">Email</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12" style=" padding: 10px;">
-                    <input name="register_pwd" type="password" class="validate">
-                    <label for="password">Password</label>
+                    <input th:field="*{password}" name="register_pwd" type="password" class="validate">
+                    <label for="register_pwd">Password</label>
                 </div>
             </div>
-            <div class="row" >
-                <p style="color: red;">ERROR MSG HERE</p>
+            <div th:if="${#servletContext.getAttribute('error') != null}" class="row" >
+                <p th:text="${#servletContext.getAttribute('error')}" style="color: red;"></p>
             </div>
             <div class="row" style="border-bottom: black 1px solid; padding: 10px 10px 20px;">
                 <div class="col offset-s2" style="padding: 0 !important;">
@@ -102,8 +94,8 @@
     </div>
         </form>
 </div>
-
-<div class="container" id="user_details" style="padding: 10px; margin-top: 100px; margin-bottom: 150px; display: none;">
+</div>
+<div th:if="${#servletContext.getAttribute('user_logged')}" class="container" id="user_details" style="padding: 10px; margin-top: 100px; margin-bottom: 150px; display: block;">
         <div class="row center-align">
             <div class="col">
                 <div style="border-bottom: black 1px solid; padding: 10px;">
@@ -114,7 +106,7 @@
         <div class="row center-align">
             <div class="col">
                 <div style="padding: 10px;">
-                    <h6>Mon adresse email :  Mon Email</h6>
+                    <h6 th:text="'Mon adresse email : ' + ${#servletContext.getAttribute('logged_in_user').mail}"></h6>
                 </div>
             </div>
         </div>

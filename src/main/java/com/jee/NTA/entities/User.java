@@ -18,8 +18,6 @@ public class User {
     @OneToMany
     private List<Commande> commandes;
 
-//    @OneToMany
-//    private List<ContactMsg> contactMsgs;
 
     public String getId() {
         return id;
@@ -69,11 +67,5 @@ public class User {
         this.mail = mail;
     }
 
-//    public List<ContactMsg> getContactMsgs() {
-//        return contactMsgs;
-//    }
-//
-//    public void setContactMsgs(List<ContactMsg> contactMsgs) {
-//        this.contactMsgs = contactMsgs;
-//    }
+
 }

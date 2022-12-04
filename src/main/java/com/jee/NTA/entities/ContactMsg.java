@@ -1,6 +1,5 @@
 package com.jee.NTA.entities;
 
-//import com.jee.NTA.crud.ContactFormRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.Entity;
@@ -12,9 +11,6 @@ import java.util.List;
 
 @Entity
 public class ContactMsg {
-//    @Autowired
-//    ContactFormRepository contactFormRepository;
-
 
     @Id
     private String id;

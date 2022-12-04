@@ -26,8 +26,6 @@ public class addDataToDB {
 
     public static void main(String[] args)
     {
-        //JSON parser object to parse read file
-        JSONParser jsonParser = new JSONParser();
 
         try (FileReader reader = new FileReader("src/main/resources/templates/html/products/product_database.json"))
         {
@@ -37,7 +35,6 @@ public class addDataToDB {
             Object obj  = parser.parse(reader);
             JSONArray array = new JSONArray();
             array.add(obj);
-            System.out.println(obj);
             array.forEach( emp -> {
                 try {
                     sendDataIntoDB( (JSONObject) emp );
@@ -88,6 +85,8 @@ public class addDataToDB {
                 StringBuilder sb = new StringBuilder();
                 for (Object value : desc) {
                     sb.append(value);
+                    sb.append(";");
+
                 }
                 String str = sb.toString();
 
@@ -118,6 +117,8 @@ public class addDataToDB {
                 StringBuilder sb = new StringBuilder();
                 for (Object value : desc) {
                     sb.append(value);
+                    sb.append(";");
+
                 }
                 String str = sb.toString();
 
@@ -148,6 +149,7 @@ public class addDataToDB {
                 StringBuilder sb = new StringBuilder();
                 for (Object value : desc) {
                     sb.append(value);
+                    sb.append(";");
                 }
                 String str = sb.toString();
 
@@ -162,6 +164,7 @@ public class addDataToDB {
 
         });
 
+        con.close();
 
     }
 
