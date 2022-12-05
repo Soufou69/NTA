@@ -10,7 +10,7 @@ import java.util.List;
 public class Produit {
     @Id
     private String id;
-    private typeProduit type;
+    private String type;
     private float price;
     private String title;
     private int stock;
@@ -29,11 +29,11 @@ public class Produit {
         this.id = id;
     }
 
-    public typeProduit getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(typeProduit type) {
+    public void setType(String type) {
         this.type = type;
     }
 
