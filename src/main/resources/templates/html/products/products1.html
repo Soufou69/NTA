@@ -1,98 +1,78 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Le Nouveau TopAchat</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
-<body>
-    <div id="cg" class="col s12" style="display: block; margin-top: 50px;">
-        <div>
-            <div class="row">
-                <div class="col">
-                    <h5 class="left-align">Découvrez nos séléctions de Cartes Graphiques ! (Si elles sont encore disponibles...)</h5>
-                </div>
-            </div>
-            <div class="row" style="margin-bottom: 100px;">
-                <ul class="collapsible">
-                    <?php foreach($product_array as $item): ?>
-                    <li class="active" id="<?=$item['product_id']?>">
-                        <div class="collapsible-header">
-                            <i class="material-icons">shopping_cart</i>
-                            <div class="col">
-                                <label style="color: black; font-size: 16px;"><?=$item['product_title']?></label>
-                            </div>
-                            <div class="col offset-s3">
-                                <label><?=$item['product_ref']?></label>
-                            </div>
-                            <div class="col offset-s1" style="margin-left:  auto; margin-right: 0;">
-                                <label><?=$item['product_price']?> €</label>
-                            </div>
-                        </div>
-                        <div class="collapsible-body">
-                            <div class="row">
-                                <div class="col offset-s1">
-                                    <img class="thumbnail" src="<?=$item['product_img_src']?>" width="250" height="250"/>
-                                </div>
-                                <div class="col offset-s1">
-                                    <ul class="desc_product">
-<!--                                        <?php for($i = 1; $i < sizeof($product_desc_array_final[$item['product_id']]); $i++) : ?>-->
-<!--                                        <li><i class="material-icons">star</i> <?=$product_desc_array_final[$item['product_id']][$i]?></li>-->
-<!--                                        <?php endfor ?>-->
-                                    </ul>
-                                </div>
-                            </div>
-                            <form  class="basket_form" name="basket" >
-                                <div class="row"  style="margin-top: 70px; margin-left: auto; margin-right: 0;">
-                                    <div class="col offset-s7" style="margin-top: 25px;">
-                                        <label id="product_<?=$item["product_id"]?>_price" class="price_label" style="display: none; color: #006fac; font-size: 20px; font-weight: bold;">XX pièce(s) en stock !</label>
-                                    </div>
-                                    <div class="col" style="margin-top: 30px;">
-                                        <i onclick="changeQuantity('+', 'product_<?=$item["product_id"]?>_quantity', 'cg')" style="border: black 1px solid; border-radius: 6px; font-size: 15px;" class="material-icons">add</i>
-                                    </div>
-                                    <div class="input-field col" style="width: 100px;">
-                                        <input name="item_id" value="<?=$item["product_title"]?>" style="display: none;" />
-                                        <input name="item_price" value="<?=$item["product_price"]?>" style="display: none;" />
-                                        <input name="number_of_item" value="1" id="product_<?=$item["product_id"]?>_quantity" min="1" max="999" type="number" />
-                                    </div>
-                                    <div class="col" style="margin-top: 30px;">
-                                        <i onclick="changeQuantity('-', 'product_<?=$item["product_id"]?>_quantity', 'cg')" style="border: black 1px solid; border-radius: 6px; font-size: 15px;" class="material-icons">remove</i>
-                                    </div>
-                                </div>
-                                <div class="row" style="margin-top: 20px;">
-<!--                                    <?php if($_SESSION['isAdmin']): ?>-->
-                                    <div class="col offset-s7">
-                                        <a style="background-color: #006fac;" class="waves-effect waves-light btn" onclick="hideStock('<?=$item["product_id"]?>'); showCurrentStock('cg', '<?=$item["product_id"]?>');"><i class="material-icons right">inventory_2</i>Voir le stock</a>
-                                    </div>
-                                    <div class="col">
-                                        <button style="background-color: #006fac;" class="btn waves-effect waves-light" type="submit">Ajouter au panier
-                                            <i class="material-icons right">add_shopping_cart</i>
-                                        </button>
-                                    </div>
+<div th:replace="~{html/inc/header}"></div>
 
-<!--                                    <?php else: ?>-->
 
-                                    <div class="col offset-s8">
-                                        <button style="background-color: #006fac;" class="btn waves-effect waves-light" type="submit">Ajouter au panier
-                                            <i class="material-icons right">add_shopping_cart</i>
-                                        </button>
-                                    </div>
-<!--                                    <?php endif; ?>-->
-
-                                </div>
-                            </form>
-
-                        </div>
-                    </li>
-<!--                    <?php endforeach ?>-->
-
-                </ul>
+<div id="cg" class="col s12" style="display: block; margin-top: 50px;">
+    <div>
+        <div class="row">
+            <div class="col">
+                <h5 th:text="'Découvrez nos séléctions de ' + ${product_type} + ' (Si ils sont encore disponibles...)'" class="left-align"></h5>
             </div>
         </div>
-    </div>
+        <div class="row" style="margin-bottom: 100px;">
+            <ul class="collapsible">
+                <li th:each="product : ${products}" th:id="${product.id}">
+                    <div class="collapsible-header">
+                        <i class="material-icons">shopping_cart</i>
+                        <div class="col">
+                            <label th:text="${product.title}" style="color: black; font-size: 16px;"></label>
+                        </div>
+                        <div class="col offset-s3">
+                            <label th:text="${product.ref}"></label>
+                        </div>
+                        <div class="col offset-s1" style="margin-left:  auto; margin-right: 0;">
+                            <label th:text="${product.price} + ' €'"></label>
+                        </div>
+                    </div>
+                    <div class="collapsible-body">
+                        <div class="row">
+                            <div class="col offset-s1">
+                                <img class="thumbnail" th:src="${product.imgSrc}" width="250" height="250"/>
+                            </div>
+                            <div class="col offset-s1">
+                                <ul class="desc_product">
+                                    DESCRIPTION DU PRODUIT
+                                </ul>
+                            </div>
+                        </div>
+                        <form name="basket" action="" method="post">
+                            <div class="row"  style="margin-top: 70px; margin-left: auto; margin-right: 0;">
+                                <div class="col offset-s7" style="margin-top: 25px;">
+                                    <label th:text="${product.stock} + 'pièce(s) en stock !'" id="product_IdItemHERE_price" class="price_label" style="display: none; color: #006fac; font-size: 20px; font-weight: bold;"></label>
+                                </div>
+                                <div class="col" style="margin-top: 30px;">
+                                    <i onclick="changeQuantity('+', 'product_IdItemHERE_quantity', 'cg')" style="border: black 1px solid; border-radius: 6px; font-size: 15px;" class="material-icons">add</i>
+                                </div>
+                                <div class="input-field col" style="width: 100px;">
+                                    <input name="item_id" th:value="${product.title}" style="display: none;" />
+                                    <input name="item_price" th:value="${product.price}" style="display: none;" />
+                                    <input name="number_of_item" value="1" id="product_IdItemHERE_quantity" min="1" max="999" type="number" />
+                                </div>
+                                <div class="col" style="margin-top: 30px;">
+                                    <i onclick="changeQuantity('-', 'product_IdItemHERE_quantity', 'cg')" style="border: black 1px solid; border-radius: 6px; font-size: 15px;" class="material-icons">remove</i>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 20px;">
+                                <div class="col offset-s7">
+                                    <a style="background-color: #006fac;" class="waves-effect waves-light btn" onclick="hideStock(product.id); showCurrentStock('cg', product.id);"><i class="material-icons right">inventory_2</i>Voir le stock</a>
+                                </div>
+                                <div class="col">
+                                    <button style="background-color: #006fac;" class="btn waves-effect waves-light" type="submit" name="basket">Ajouter au panier
+                                        <i class="material-icons right">add_shopping_cart</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
 
-    <div id="myModal" class="modal">
-        <img class="modal-content" id="img01">
-        <div id="caption"></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
-</body>
-</html>
+</div>
+
+
+<div th:replace="~{html/inc/footer}"></div>
+<div id="myModal" class="modal">
+    <img class="modal-content" id="img01">
+    <div id="caption"></div>
+</div>

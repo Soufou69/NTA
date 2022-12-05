@@ -17,18 +17,21 @@ public class ProductsController {
     @GetMapping("/products")
     public String getProducts1(Model model) throws Exception {
         model.addAttribute("products", retrieveProductFromDB("CG"));
+        model.addAttribute("product_type", "Cartes Graphiques");
         return "html/products/products";
     }
 
     @GetMapping("/products2")
     public String getProducts2(Model model) throws Exception {
         model.addAttribute("products", retrieveProductFromDB("PROC"));
+        model.addAttribute("product_type", "Processeurs");
         return "html/products/products2";
     }
 
     @GetMapping("/products3")
     public String getProducts3(Model model) throws Exception {
-        model.addAttribute("products", retrieveProductFromDB("PROC"));
+        model.addAttribute("products", retrieveProductFromDB("RAM"));
+        model.addAttribute("product_type", "Mémoire RAM");
         return "html/products/products2";
     }
 
