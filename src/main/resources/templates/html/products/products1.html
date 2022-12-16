@@ -1,0 +1,59 @@
+<div id="cg" class="col s12" style="display: block; margin-top: 50px;">
+  <div>
+    <div class="row">
+      <div class="col">
+        <h5 class="left-align">Découvrez nos séléctions de Cartes Graphiques ! (Si elles sont encore disponibles...)</h5>
+      </div>
+    </div>
+    <div class="row" style="margin-bottom: 100px;">
+      <ul class="collapsible">
+        <li th:each=" p :${products}" class="active" th:id="${p.getId()}">
+        <div class="collapsible-header">
+          <i class="material-icons">shopping_cart</i>
+          <div class="col">
+            <label style="color: black; font-size: 16px;" th:text="${p.getTitle()}"></label>
+          </div>
+          <div class="col offset-s3">
+            <label th:text="${p.getRef()}"></label>
+          </div>
+          <div class="col offset-s1" style="margin-left:  auto; margin-right: 0;">
+            <label th:text="${p.getPrice()}+'€'"></label>
+          </div>
+        </div>
+        <div class="collapsible-body">
+          <div class="row">
+            <div class="col offset-s1">
+              <img class="thumbnail" th:src="${p.getImgSrc()}" width="250" height="250"/>
+            </div>
+            <div class="col offset-s1">
+              <ul class="desc_product">
+                <li th:each="desc : ${p.getDesc()}"><i class="material-icons">star</i> <p th:text="${desc}"></p></li>
+              </ul>
+            </div>
+          </div>
+          <form name="basket" action="" method="post">
+            <div class="row"  style="margin-top: 70px; margin-left: auto; margin-right: 0;">
+              <div class="col offset-s7" style="margin-top: 25px;">
+                <label th:id="${p.getPrice()}+'_price'" class="price_label" style="display: none; color: #006fac; font-size: 20px; font-weight: bold;">XX pièce(s) en stock !</label>
+              </div>
+              <div class="input-field col" style="width: 100px;">
+                <input name="item_id" th:value="${p.getTitle()}" style="display: none;" />
+                <input name="item_price" th:value="${p.getPrice()}" style="display: none;" />
+                <input name="number_of_item" value="1" th:id="${p.getId()}+'_quantity'" min="1" max="999" type="number" />
+              </div>
+            </div>
+          </form>
+
+        </div>
+        </li>
+        <?php endforeach ?>
+
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div id="myModal" class="modal">
+  <img class="modal-content" id="img01">
+  <div id="caption"></div>
+</div>
