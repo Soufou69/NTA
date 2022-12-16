@@ -13,9 +13,11 @@ public class User {
     private String name;
     private String password;
     private boolean isAdmin;
+    private String mail;
 
     @OneToMany
     private List<Commande> commandes;
+
 
     public String getId() {
         return id;
@@ -56,4 +58,14 @@ public class User {
     public void setCommandes(List<Commande> commandes) {
         this.commandes = commandes;
     }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+
 }

@@ -1,18 +1,3 @@
-stockCG = [];
-stockPROC = [];
-stockRAM = [];
-
-
-fetch("../php/products/product_database.json")
-    .then(response => {
-        return response.json();
-    })
-    .then(data => {
-        stockCG = data["products"]["stockCG"];
-        stockPROC = data["products"]["stockPROC"];
-        stockRAM = data["products"]["stockRAM"];
-    });
-
 
 
 function displayProducts(product) {
