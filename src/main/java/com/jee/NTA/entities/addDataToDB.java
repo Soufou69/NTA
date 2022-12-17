@@ -18,8 +18,8 @@ public class addDataToDB {
         //Registering the Driver
         DriverManager.registerDriver(new com.mysql.jdbc.Driver());
         //Getting the connection
-        String mysqlUrl = "jdbc:mysql://localhost/java";
-        Connection con = DriverManager.getConnection(mysqlUrl, "root", "root");
+        String mysqlUrl = "jdbc:mysql://localhost/JavaNTA2";
+        Connection con = DriverManager.getConnection(mysqlUrl, "corentin", "corentin");
         System.out.println("Connection established......");
         return con;
     }

@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ProduitService {
@@ -21,6 +22,11 @@ public class ProduitService {
     @Transactional
     public List<Produit> findAllProduit(){
         return this.produitDAO.findAll();
+    }
+
+    @Transactional
+    public List<Produit> findAllProduitByType(String type){
+        return this.produitDAO.findAll().stream().filter(produit -> produit.getType().equals(type)).collect(Collectors.toList());
     }
 
     @Transactional
