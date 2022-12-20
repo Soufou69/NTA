@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Administration</title>
+    <link rel="stylesheet" href="css/admin/bulma/css/bulma.min.css" />
+    <link rel="stylesheet" href="css/admin/style.css" />
+    <link rel="stylesheet" href="css/admin/index.css" />
+</head>
+<body>
+
+<aside th:replace="~{html/admin/sidebar}" ></aside>
+
+<nav>
+    <div class="nav-container">
+        <div class="menu-toggle"><span id="menu-toggle" class="" onclick="showHiddenSideBar()"><img src="img/admin/icons/menu.svg" /></span></div>
+        <div class="user"><p>Hi John Doe!</p></div>
+        <div class="back nav-case"><a href="">Retour au site</a></div>
+        <div class="disconnect nav-case"><a href=""><img src="img/admin/icons/logout.svg" /></a></div>
+    </div>
+</nav>
+
+<div class="contentPage box">
+    <article class="message is-link">
+        <div class="message-header">
+            <p>Information</p>
+        </div>
+        <div class="message-body">
+            La partie Administration est encore en <strong>développement</strong>. Des bugs peuvent <b>survenir</b>. Contactez le service informatique pour les signaler.
+        </div>
+    </article>
+    <hr >
+    <div class="container">
+        <div class="columns">
+            <div class="column">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image">
+                            <img src="img/admin/icons/inventory.svg" alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="content">
+                            <h3>Nombre de produits en vente: </h3>
+                            <h2 th:text="${nbProduct}"></h2>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image">
+                            <img src="img/admin/icons/chat.svg" alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="content">
+                            <h3>Nombre de messages au support: </h3>
+                            <h2 th:text="${nbMsg}"></h2>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image">
+                            <img src="img/admin/icons/account.svg" alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="content">
+                            <h3>Nombre de clients: </h3>
+                            <h2 th:text="${nbClient}"></h2>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<script src="js/admin/nav.js"></script>
+</body>
+</html>

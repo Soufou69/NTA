@@ -42,6 +42,12 @@ public class UserService {
     }
 
     @Transactional
+    public List<User> findAllClient() {
+        List<User> client = this.userDAO.findAll().stream().filter(user -> !user.isAdmin()).collect(Collectors.toList());
+        return client;
+    }
+
+    @Transactional
     public User saveUser(User newUser) {
         UUID uuid = UUID.randomUUID();
         newUser.setAdmin(false);

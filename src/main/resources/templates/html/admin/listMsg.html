@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Administration</title>
+  <link rel="stylesheet" href="css/admin/bulma/css/bulma.min.css" />
+  <link rel="stylesheet" href="css/admin/style.css" />
+  <link rel="stylesheet" href="css/admin/msg.css" />
+</head>
+<body>
+
+<aside th:replace="~{html/admin/sidebar}" ></aside>
+
+<nav>
+  <div class="nav-container">
+    <div class="menu-toggle"><span id="menu-toggle" class="" onclick="showHiddenSideBar()"><img src="img/admin/icons/menu.svg" /></span></div>
+    <div class="user"><p>Hi John Doe!</p></div>
+    <div class="back nav-case"><a href="/">Retour au site</a></div>
+    <div class="disconnect nav-case"><a href=""><img src="img/admin/icons/logout.svg" /></a></div>
+  </div>
+</nav>
+
+<div class="contentPage box">
+  <h1 class="title">Consulter les messages au support</h1>
+  <hr >
+  <div class="columns">
+    <div class="column">
+      <div th:each="msg : ${msgs}" class="card">
+        <header class="card-header">
+          <p class="card-header-title" th:text="${msg.getSujetMail()}"></p>
+          <button class="card-header-icon" aria-label="more options">
+                            <span class="icon">
+                              <img src="img/admin/icons/expand.svg" class="icon" aria-hidden="true"></img>
+                            </span>
+          </button>
+        </header>
+        <div class="card-content is-hidden">
+          <div class="content" >
+            <p th:text="${msg.getContenuMail()}"></p>
+            <br>
+            <b th:text="${msg.getName()}"></b>
+            <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+          </div>
+        </div>
+        <footer class="card-footer is-hidden">
+          <a href="#" class="card-footer-item">Archiver</a>
+          <a href="/support" data-method="delete" class="card-footer-item">Supprimer</a>
+        </footer>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/admin/nav.js"></script>
+<script src="js/admin/msg.js"></script>
+
+</body>
+</html>
