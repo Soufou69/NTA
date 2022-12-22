@@ -42,7 +42,7 @@
       <td th:text="${product.getStock()}">Stock</td>
       <td th:text="${product.getImgSrc()}">Lien image</td>
       <td th:text="${product.getDesc()}">Description</td>
-      <td><button class="button is-link js-modal-trigger" data-target="modal-modify">Modifier</button> <button class="button is-danger js-modal-trigger" data-target="modal-delete">Supprimer</button></td>
+      <td><button th:id="${product.getId()}" onclick="document.getElementById('f_product_id').setAttribute('id', this.getAttribute('id'));" class="button is-link js-modal-trigger" data-target="modal-modify">Modifier</button> <button class="button is-danger js-modal-trigger" data-target="modal-delete">Supprimer</button></td>
     </tr>
 
   </table>
@@ -52,17 +52,19 @@
 <div class="modal" id="modal-modify">
   <div class="modal-background"></div>
   <div class="modal-card">
+
     <header class="modal-card-head">
       <p class="modal-card-title">Modification</p>
       <button class="delete" aria-label="close"></button>
     </header>
-    <section class="modal-card-body">
-      <form class="box">
 
-        <div class="field">
+    <section class="modal-card-body">
+      <form id="f_product_id" class="box" action="#" method="post" th:action="@{/modifProduct}" >
+
+      <div class="field">
           <label class="label">Nom du produit</label>
           <div class="control">
-            <input class="input" type="text" placeholder="Nom" required>
+            <input th:field="*{title}" class="input" type="text" placeholder="Nom" required>
           </div>
         </div>
 
@@ -72,9 +74,9 @@
             <div class="select" style="width: 100%;">
               <select style="width: 100%;" required>
                 <option>Choisir un type</option>
-                <option>CG</option>
-                <option>RAM</option>
-                <option>PROC</option>
+                <option th:field="*{type}">CG</option>
+                <option th:field="*{type}">RAM</option>
+                <option th:field="*{type}">PROC</option>
               </select>
             </div>
           </div>
@@ -83,37 +85,37 @@
         <div class="field">
           <label class="label">Prix unitaire (€)</label>
           <div class="control">
-            <input class="input" min="0" step="0.01" type="number" placeholder="0" required>
+            <input th:field="*{price}" class="input" min="0" step="0.01" type="number" placeholder="0" required>
           </div>
         </div>
 
         <div class="field">
           <label class="label">Stock</label>
           <div class="control">
-            <input class="input" min="0" step="1" type="number" placeholder="0" required>
+            <input th:field="*{stock}" class="input" min="0" step="1" type="number" placeholder="0" required>
           </div>
         </div>
 
         <div class="field">
           <label class="label">Lien vers l'image du produit</label>
           <div class="control">
-            <input class="input" type="text" placeholder="Nom" required>
+            <input th:field="*{imgSrc}" class="input" type="text" placeholder="Nom" required>
           </div>
         </div>
 
         <div class="field">
           <label class="label">Description du produit</label>
           <div class="control">
-            <textarea id="story" name="story" rows="5" cols="33" style="resize: none; width:100%" required></textarea>
+            <textarea th:field="*{desc}" id="story" name="story" rows="5" cols="33" style="resize: none; width:100%" required></textarea>
           </div>
         </div>
-
       </form>
     </section>
     <footer class="modal-card-foot">
       <button class="button is-link">Modifier</button>
       <button class="button">Annuler</button>
     </footer>
+
   </div>
 </div>
 <!-- End Modal Modify -->

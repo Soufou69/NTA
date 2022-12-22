@@ -25,6 +25,11 @@ public class ContactMsgService {
     }
 
     @Transactional
+    public void deleteById(String id) {
+        this.contactMsgDao.deleteById(id);
+    }
+
+    @Transactional
     public void saveMsg(ContactForm newMsg) {
         ContactMsg msgTmp = new ContactMsg();
         UUID uuid = UUID.randomUUID();

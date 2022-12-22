@@ -25,6 +25,7 @@
   <div class="columns">
     <div class="column">
       <div th:each="msg : ${msgs}" class="card">
+        <form action="#" method="post" th:action="@{/support}" id="delete_msg_form">
         <header class="card-header">
           <p class="card-header-title" th:text="${msg.getSujetMail()}"></p>
           <button class="card-header-icon" aria-label="more options">
@@ -43,8 +44,10 @@
         </div>
         <footer class="card-footer is-hidden">
           <a href="#" class="card-footer-item">Archiver</a>
-          <a href="/support" data-method="delete" class="card-footer-item">Supprimer</a>
+          <input type="hidden" name="msg_id" th:value="${msg.getId()}"/>
+          <a href="#" onclick="document.getElementById('delete_msg_form').submit()" class="card-footer-item">Supprimer</a>
         </footer>
+        </form>
       </div>
     </div>
   </div>
