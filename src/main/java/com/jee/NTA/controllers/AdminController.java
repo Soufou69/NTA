@@ -1,5 +1,6 @@
 package com.jee.NTA.controllers;
 
+import com.jee.NTA.entities.ContactForm;
 import com.jee.NTA.entities.ContactMsg;
 import com.jee.NTA.entities.Produit;
 import com.jee.NTA.entities.User;
@@ -11,6 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.ServletContext;
 import java.util.List;
@@ -53,6 +57,7 @@ public class AdminController {
             model.addAttribute("nbProduct", nbProduct);
             model.addAttribute("nbMsg", nbMsg);
             model.addAttribute("nbClient", nbClient);
+            model.addAttribute("user_admin", current_user.getName());
 
             return "html/admin/indexAdmin";
         } else {
@@ -67,6 +72,7 @@ public class AdminController {
         User current_user = (User) servletContext.getAttribute("logged_in_user");
 
         if (UserService.checkIfAdmin(current_user)) {
+            model.addAttribute("user_admin", current_user.getName());
             return "html/admin/addProduct";
         } else {
             return "index";
@@ -77,6 +83,7 @@ public class AdminController {
         User current_user = (User) servletContext.getAttribute("logged_in_user");
 
         if (UserService.checkIfAdmin(current_user)) {
+            model.addAttribute("user_admin", current_user.getName());
             return "html/admin/listCommands";
         } else {
             return "index";
@@ -88,7 +95,8 @@ public class AdminController {
 
 
         if (UserService.checkIfAdmin(current_user)) {
-
+            model.addAttribute("user_admin", current_user.getName());
+            model.addAttribute("m_product", new Produit());
             List<Produit> products = this.produitService.findAllProduit();
             model.addAttribute("products", products);
             return "html/admin/modifProduct";
@@ -97,12 +105,51 @@ public class AdminController {
         }
 
     }
+
+    @RequestMapping( "/modifProduct")
+    String modifyProduct(@ModelAttribute Produit p, Model model){
+
+        User current_user = (User) servletContext.getAttribute("logged_in_user");
+
+        if (UserService.checkIfAdmin(current_user)) {
+            model.addAttribute("m_product", p);
+
+            this.produitService.modifyProduct(p);
+            List<Produit> products = this.produitService.findAllProduit();
+            model.addAttribute("products", products);
+            return "html/admin/modifProduct";
+
+        } else {
+            return "index";
+        }
+
+    }
+
+    @RequestMapping( "/delProduct")
+    String deleteProduct(@RequestParam("prod_id") String prod_id, Model model){
+
+        User current_user = (User) servletContext.getAttribute("logged_in_user");
+
+        if (UserService.checkIfAdmin(current_user)) {
+            model.addAttribute("m_product", new Produit());
+            this.produitService.deleteProduitById(prod_id);
+            List<Produit> products = this.produitService.findAllProduit();
+            model.addAttribute("products", products);
+            return "html/admin/modifProduct";
+
+        } else {
+            return "index";
+        }
+
+    }
+
     @GetMapping(value = "/support")
     String support(Model model) {
 
         User current_user = (User) servletContext.getAttribute("logged_in_user");
 
         if (UserService.checkIfAdmin(current_user)) {
+            model.addAttribute("user_admin", current_user.getName());
             List<ContactMsg> msgs = this.contactMsgService.findAllMsg();
             model.addAttribute("msgs", msgs);
             return "html/admin/listMsg";
@@ -111,4 +158,22 @@ public class AdminController {
         }
 
     }
+
+    @RequestMapping( "/support")
+    String deleteMsg(@RequestParam("msg_id") String msg_id, Model model){
+
+        User current_user = (User) servletContext.getAttribute("logged_in_user");
+
+        if (UserService.checkIfAdmin(current_user)) {
+            model.addAttribute("user_admin", current_user.getName());
+            this.contactMsgService.deleteById(msg_id);
+            return "html/admin/listMsg";
+
+        } else {
+            return "index";
+        }
+
+    }
+
+
 }

@@ -43,7 +43,7 @@ public class UserService {
 
     @Transactional
     public List<User> findAllClient() {
-        List<User> client = this.userDAO.findAll().stream().filter(user -> !user.isAdmin()).collect(Collectors.toList());
+        List<User> client = this.userDAO.findAll().stream().collect(Collectors.toList());
         return client;
     }
 

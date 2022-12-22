@@ -30,6 +30,21 @@ public class ProduitService {
     }
 
     @Transactional
+    public void modifyProduct(Produit p) {
+        this.produitDAO.findById(p.getId()).ifPresent(produit -> {
+            System.out.println(p.getType());
+            produit.setDesc(p.getDesc());
+            produit.setTitle(p.getTitle());
+            produit.setType(p.getType());
+            produit.setPrice(p.getPrice());
+            produit.setStock(p.getStock());
+            produit.setImgSrc(p.getImgSrc());
+            produit.setId(p.getId());
+
+        });
+    }
+    
+    @Transactional
     public Optional<Produit> findProduitById(String idProduit) {
         return this.produitDAO.findById(idProduit);
     }
@@ -40,8 +55,7 @@ public class ProduitService {
     }
 
     @Transactional
-    public String deleteProduitById(String idProduit) {
+    public void deleteProduitById(String idProduit) {
        this.produitDAO.deleteById(idProduit);
-        return idProduit;
     }
 }
