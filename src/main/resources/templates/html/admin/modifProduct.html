@@ -12,7 +12,7 @@
 <nav>
   <div class="nav-container">
     <div class="menu-toggle"><span id="menu-toggle" class="" onclick="showHiddenSideBar()"><img src="img/admin/icons/menu.svg" /></span></div>
-    <div class="user"><p>Hi John Doe!</p></div>
+    <div class="user"><p th:text="'Hi '+${user_admin}"></p></div>
     <div class="back nav-case"><a href="/">Retour au site</a></div>
     <div class="disconnect nav-case"><a href=""><img src="img/admin/icons/logout.svg" /></a></div>
   </div>
@@ -42,7 +42,7 @@
       <td th:text="${product.getStock()}">Stock</td>
       <td th:text="${product.getImgSrc()}">Lien image</td>
       <td th:text="${product.getDesc()}">Description</td>
-      <td><button th:id="${product.getId()}" onclick="document.getElementById('f_product_id').setAttribute('id', this.getAttribute('id'));" class="button is-link js-modal-trigger" data-target="modal-modify">Modifier</button> <button class="button is-danger js-modal-trigger" data-target="modal-delete">Supprimer</button></td>
+      <td><button th:class="${product.getId()}+' button is-link js-modal-trigger'" onclick="document.getElementById('f_product_id').setAttribute('id', this.getAttribute('class').split(' ')[0]);document.getElementById('m_product_id').setAttribute('value', this.getAttribute('class').split(' ')[0]);" data-target="modal-modify">Modifier</button> <button th:class="${product.getId()}+' button is-danger js-modal-trigger'" onclick="document.getElementById('d_product_id').setAttribute('id', this.getAttribute('class').split(' ')[0]);document.getElementById('del_product_id').setAttribute('value', this.getAttribute('class').split(' ')[0]);" data-target="modal-delete">Supprimer</button></td>
     </tr>
 
   </table>
@@ -50,16 +50,15 @@
 
 <!-- Modal Modify-->
 <div class="modal" id="modal-modify">
+  <form id="f_product_id" class="box" action="/admin" method="post" th:action="@{/modifProduct}" th:object="${m_product}">
+    <input th:field="*{id}" type="text" hidden="true" id="m_product_id" value="">
   <div class="modal-background"></div>
   <div class="modal-card">
-
     <header class="modal-card-head">
       <p class="modal-card-title">Modification</p>
       <button class="delete" aria-label="close"></button>
     </header>
-
     <section class="modal-card-body">
-      <form id="f_product_id" class="box" action="#" method="post" th:action="@{/modifProduct}" >
 
       <div class="field">
           <label class="label">Nom du produit</label>
@@ -72,11 +71,10 @@
           <label class="label">Type du produit</label>
           <div class="control">
             <div class="select" style="width: 100%;">
-              <select style="width: 100%;" required>
-                <option>Choisir un type</option>
-                <option th:field="*{type}">CG</option>
-                <option th:field="*{type}">RAM</option>
-                <option th:field="*{type}">PROC</option>
+              <select th:field="*{type}" style="width: 100%;" required>
+                <option th:value="'CG'">CG</option>
+                <option th:value="'RAM'">RAM</option>
+                <option th:value="'PROC'">PROC</option>
               </select>
             </div>
           </div>
@@ -109,31 +107,38 @@
             <textarea th:field="*{desc}" id="story" name="story" rows="5" cols="33" style="resize: none; width:100%" required></textarea>
           </div>
         </div>
-      </form>
+
     </section>
     <footer class="modal-card-foot">
-      <button class="button is-link">Modifier</button>
+      <button type="submit" class="button is-link">Modifier</button>
       <button class="button">Annuler</button>
     </footer>
-
   </div>
+  </form>
 </div>
 <!-- End Modal Modify -->
 
 <div class="modal" id="modal-delete">
   <div class="modal-background"></div>
   <div class="modal-card">
+
     <header class="modal-card-head">
       <p class="modal-card-title">Confirmation</p>
       <button class="delete" aria-label="close"></button>
     </header>
-    <section class="modal-card-body">
-      <p>Voulez vraiment effacer l'article : <b>REF</b> ?</p>
-    </section>
-    <footer class="modal-card-foot">
-      <button class="button is-danger">Effacer</button>
-      <button class="button">Annuler</button>
-    </footer>
+      <div>
+        <form id="d_product_id" class="box" action="/admin" method="post" th:action="@{/delProduct}">
+          <input type="text" hidden="true" id="del_product_id" name="prod_id">
+            <section class="modal-card-body">
+              <p>Voulez vraiment effacer l'article : <b>REF</b> ?</p>
+            </section>
+            <footer class="modal-card-foot">
+                <button type="submit" class="button is-danger">Effacer</button>
+                  <button type="reset" class="button">Annuler</button>
+            </footer>
+        </form>
+      </div>
+
   </div>
 </div>
 

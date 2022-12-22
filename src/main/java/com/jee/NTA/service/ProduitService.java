@@ -32,12 +32,14 @@ public class ProduitService {
     @Transactional
     public void modifyProduct(Produit p) {
         this.produitDAO.findById(p.getId()).ifPresent(produit -> {
+            System.out.println(p.getType());
             produit.setDesc(p.getDesc());
             produit.setTitle(p.getTitle());
             produit.setType(p.getType());
             produit.setPrice(p.getPrice());
             produit.setStock(p.getStock());
             produit.setImgSrc(p.getImgSrc());
+            produit.setId(p.getId());
 
         });
     }
