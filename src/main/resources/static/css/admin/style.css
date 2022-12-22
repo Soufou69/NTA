@@ -1,0 +1,151 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+body{
+    background-color: rgb(243, 243, 243);
+}
+
+/* Sidebar nav */
+aside {
+    background: rgb(33, 33, 44);
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 20;
+}
+
+.aside-top {
+    background-color: rgb(20, 21, 34);
+    height: 3rem;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    color : white;
+}
+
+.menu-label {
+    padding: 3px;
+}
+
+.menu-list a{
+    border-radius: 0 !important;
+    color: rgb(77, 77, 90);
+    font-size: medium;
+}
+
+.menu-element a:hover{
+    background-color: rgb(24, 24, 32) !important;
+    color: whitesmoke;
+}
+
+@media screen and (max-width: 1023px){
+    aside {
+        transition: left 250ms ease-in-out 50ms;
+        left: -250px;
+    }
+    nav {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 1024px){
+    aside {
+        transition: left 250ms ease-in-out 50ms;
+        left : 0px;
+    }
+    nav {
+        width: calc(100% - 250px);
+    }
+}
+
+/* Navbar top */
+
+nav {
+    height: 3rem;
+    float: right;
+    border-bottom: 1px solid rgb(224, 224, 224);
+    background-color: white;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+}
+
+.disconnect {
+    width: 40px;
+}
+
+.nav-case {
+    border-left: 1px solid rgb(224, 224, 224);
+    height: 100%;
+    margin-left: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.back a{
+    margin-left: 30px;
+}
+.disconnect img {
+    width : 2rem !important;
+}
+
+.user p {
+    font-size: 1.2em;
+}
+
+/* sidebar toggle icon */
+@media screen and (max-width: 1023px){
+    .menu-toggle {
+        transition: opacity 100ms ease-in-out 50ms;
+        opacity: 1;
+    }
+}
+    
+@media screen and (min-width: 1024px){
+    .menu-toggle {
+        transition: opacity 100ms ease-in-out 50ms;
+        opacity: 0;
+    }
+}
+
+.menu-toggle {
+    flex-grow: 1;
+    
+}
+
+.menu-toggle img {
+    cursor: pointer;
+}
+
+
+/* Container for the pages's content*/
+
+.contentPage {
+    
+    float: right;
+    margin: 25px;
+}
+
+
+@media screen and (min-width: 1024px){
+    .contentPage {
+        width: calc(100% - 300px);
+    }
+}
+
+@media screen and (max-width: 1023px){
+    .contentPage {
+        width: calc(100% - 50px);
+    }
+}

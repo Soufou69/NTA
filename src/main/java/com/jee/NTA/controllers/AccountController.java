@@ -1,6 +1,7 @@
 package com.jee.NTA.controllers;
 
 import com.jee.NTA.entities.User;
+import com.jee.NTA.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -12,12 +13,18 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.UUID;
 
 import static com.jee.NTA.entities.addDataToDB.ConnectToDB;
 
 @Controller
 public class AccountController {
+    private UserService userService;
+
+    public AccountController(UserService userService) {
+        this.userService=userService;
+    }
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -44,19 +51,20 @@ public class AccountController {
 
 //        servletContext.setAttribute("user_logged", false);
         model.addAttribute("user_register", user);
-        registerNewUserAccount(user);
+        this.userService.saveUser(user);
         return "html/user";
     }
 
     @RequestMapping( "/login")
     String login(@RequestParam("login_mail") String user_mail, @RequestParam("login_passwd") String user_passwd, Model model) throws Exception {
 
-        User current_user = userLogin(user_mail, user_passwd);
+        User current_user = this.userService.findUserforLog(user_mail,user_passwd);
         if (current_user == null) {
             model.addAttribute("user_register", new User());
-//            servletContext.setAttribute("user_logged", false);
+            servletContext.setAttribute("user_logged", false);
             servletContext.setAttribute("error", "Erreur : email ou mot de passe invalide !");
         } else {
+            System.out.println(current_user.getName());
             model.addAttribute("user_register", new User());
             servletContext.setAttribute("user_logged", true);
             servletContext.setAttribute("logged_in_user", current_user);

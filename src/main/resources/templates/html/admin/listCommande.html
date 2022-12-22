@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Administration</title>
+  <link rel="stylesheet" href="css/admin/bulma/css/bulma.min.css" />
+  <link rel="stylesheet" href="css/admin/style.css" />
+</head>
+<body>
+
+<aside th:replace="~{html/admin/sidebar}" ></aside>
+
+<nav>
+  <div class="nav-container">
+    <div class="menu-toggle"><span id="menu-toggle" class="" onclick="showHiddenSideBar()"><img src="img/admin/icons/menu.svg" /></span></div>
+    <div class="user"><p>Hi John Doe!</p></div>
+    <div class="back nav-case"><a href="/">Retour au site</a></div>
+    <div class="disconnect nav-case"><a href=""><img src="img/admin/icons/logout.svg" /></a></div>
+  </div>
+</nav>
+
+<div class="contentPage box">
+  <div class="card">
+    <header class="card-header">
+      <p class="card-header-title">
+        #001
+      </p>
+      <button class="card-header-icon" aria-label="more options">
+                    <span class="icon">
+                      <img src="img/admin/icons/expand.svg" class="icon" aria-hidden="true"></img>
+                    </span>
+      </button>
+    </header>
+    <div class="card-content is-hidden">
+      <div class="content">
+        Commande de <b>"NomUser"</b><br>
+        Montant total : <b>xxxxx€</b>
+        <br>
+        <br>
+        <table class="table is-striped is-bordered is-narrow is-hoverable is-fullwidth">
+          <thead>
+          <tr>
+            <td><b>Ref</b></td>
+            <td><b>Nom</b></td>
+            <td><b>Type</b></td>
+            <td><b>Quantité</b></td>
+            <td><b>Prix unitaire</b></td>
+            <td><b>Prix Total</b></td>
+          </tr>
+          </thead>
+          <tr>
+            <td>#1</td>
+            <td>RTX 3090</td>
+            <td>CG</td>
+            <td>1</td>
+            <td>1000€</td>
+            <td>1000€</td>
+          </tr>
+          <tr>
+            <td>#2</td>
+            <td>I5 12600K</td>
+            <td>CPU</td>
+            <td>2</td>
+            <td>300€</td>
+            <td>600€</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/admin/nav.js"></script>
+<script src="js/admin/msg.js"></script>
+
+</body>
+</html>
