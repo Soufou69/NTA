@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -35,8 +36,10 @@ public class ProduitService {
     }
 
     @Transactional
-    public Produit saveProduit(Produit newProduit) {
-        return this.produitDAO.save(newProduit);
+    public void saveProduit(Produit newProduit) {
+        UUID uuid = UUID.randomUUID();
+        newProduit.setId(uuid.toString());
+       this.produitDAO.save(newProduit);
     }
 
     @Transactional

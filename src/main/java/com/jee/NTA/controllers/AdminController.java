@@ -1,5 +1,6 @@
 package com.jee.NTA.controllers;
 
+import com.jee.NTA.entities.ContactForm;
 import com.jee.NTA.entities.ContactMsg;
 import com.jee.NTA.entities.Produit;
 import com.jee.NTA.entities.User;
@@ -10,6 +11,8 @@ import com.jee.NTA.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -41,8 +44,18 @@ public class AdminController {
 
     @GetMapping(value = "/addProduct")
     String addProduct(Model model) {
+        model.addAttribute("product", new Produit());
         return "html/admin/addProduct";
     }
+    @PostMapping(value = "/addProduct")
+    String addNewProduct(@ModelAttribute Produit newProduct, Model model) {
+        this.produitService.saveProduit(newProduct);
+        model.addAttribute("product", new Produit());
+        return "html/admin/addProduct";
+    }
+
+
+
     @GetMapping(value = "/commands")
     String listProduct(Model model) {
         return "html/admin/listCommands";
