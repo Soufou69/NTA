@@ -18,8 +18,8 @@ public class addDataToDB {
         //Registering the Driver
         DriverManager.registerDriver(new com.mysql.jdbc.Driver());
         //Getting the connection
-        String mysqlUrl = "jdbc:mysql://localhost/JavaNTA2";
-        Connection con = DriverManager.getConnection(mysqlUrl, "corentin", "corentin");
+        String mysqlUrl = "jdbc:mysql://localhost/java";
+        Connection con = DriverManager.getConnection(mysqlUrl, "root", "root");
         System.out.println("Connection established......");
         return con;
     }
@@ -56,6 +56,24 @@ public class addDataToDB {
     private static void sendDataIntoDB(JSONObject data) throws Exception {
 
         Connection con = ConnectToDB();
+
+        // Check if products already exists
+        try {
+            PreparedStatement pstmt = con.prepareStatement("SELECT * FROM produit;");
+            ResultSet rs = pstmt.executeQuery();
+            System.out.println(rs.getRow());
+            int count_products = 0;
+            while(rs.next()) {
+                count_products++;
+            }
+            if (count_products == 15) {
+                rs.close();
+                pstmt.close();
+                return;
+            }
+        } finally {
+            System.out.println("Aucun problème rencontré");
+        }
 
         //Get products
         JSONObject productsObject = (JSONObject) data.get("products");
