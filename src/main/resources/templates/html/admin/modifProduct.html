@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Administration</title>
+  <link rel="stylesheet" href="css/admin/bulma/css/bulma.min.css" />
+  <link rel="stylesheet" href="css/admin/style.css" />
+</head>
+<body>
+
+<aside th:replace="~{html/admin/sidebar}" ></aside>
+
+<nav>
+  <div class="nav-container">
+    <div class="menu-toggle"><span id="menu-toggle" class="" onclick="showHiddenSideBar()"><img src="img/admin/icons/menu.svg" /></span></div>
+    <div class="user"><p th:text="'Hi '+${user_admin}"></p></div>
+    <div class="back nav-case"><a href="/">Retour au site</a></div>
+    <div class="disconnect nav-case"><a href=""><img src="img/admin/icons/logout.svg" /></a></div>
+  </div>
+</nav>
+
+<div class="contentPage box">
+  <h1 class="title">Liste des produits</h1>
+  <hr>
+  <table class="table is-striped is-bordered is-narrow is-hoverable is-fullwidth">
+    <thead>
+    <tr>
+      <td><b>Ref</b></td>
+      <td><b>Nom</b></td>
+      <td><b>Type</b></td>
+      <td><b>Prix</b></td>
+      <td><b>Stock</b></td>
+      <td><b>Lien image</b></td>
+      <td><b>Description</b></td>
+      <td><b>Actions</b></td>
+    </tr>
+    </thead>
+    <tr th:each="product : ${products}">
+      <td th:text="${product.getRef()}">Ref</td>
+      <td th:text="${product.getTitle()}">Nom</td>
+      <td th:text="${product.getType()}">Type</td>
+      <td th:text="${product.getPrice()}">Prix</td>
+      <td th:text="${product.getStock()}">Stock</td>
+      <td th:text="${product.getImgSrc()}">Lien image</td>
+      <td th:text="${product.getDesc()}">Description</td>
+      <td><button th:class="${product.getId()}+' button is-link js-modal-trigger'" onclick="document.getElementById('f_product_id').setAttribute('id', this.getAttribute('class').split(' ')[0]);document.getElementById('m_product_id').setAttribute('value', this.getAttribute('class').split(' ')[0]);" data-target="modal-modify">Modifier</button> <button th:class="${product.getId()}+' button is-danger js-modal-trigger'" onclick="document.getElementById('d_product_id').setAttribute('id', this.getAttribute('class').split(' ')[0]);document.getElementById('del_product_id').setAttribute('value', this.getAttribute('class').split(' ')[0]);" data-target="modal-delete">Supprimer</button></td>
+    </tr>
+
+  </table>
+</div>
+
+<!-- Modal Modify-->
+<div class="modal" id="modal-modify">
+  <form id="f_product_id" class="box" action="/admin" method="post" th:action="@{/modifProduct}" th:object="${m_product}">
+    <input th:field="*{id}" type="text" hidden="true" id="m_product_id" value="">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Modification</p>
+      <button class="delete" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+
+      <div class="field">
+          <label class="label">Nom du produit</label>
+          <div class="control">
+            <input th:field="*{title}" class="input" type="text" placeholder="Nom" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Type du produit</label>
+          <div class="control">
+            <div class="select" style="width: 100%;">
+              <select th:field="*{type}" style="width: 100%;" required>
+                <option th:value="'CG'">CG</option>
+                <option th:value="'RAM'">RAM</option>
+                <option th:value="'PROC'">PROC</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Prix unitaire (€)</label>
+          <div class="control">
+            <input th:field="*{price}" class="input" min="0" step="0.01" type="number" placeholder="0" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Stock</label>
+          <div class="control">
+            <input th:field="*{stock}" class="input" min="0" step="1" type="number" placeholder="0" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Lien vers l'image du produit</label>
+          <div class="control">
+            <input th:field="*{imgSrc}" class="input" type="text" placeholder="Nom" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Description du produit</label>
+          <div class="control">
+            <textarea th:field="*{desc}" id="story" name="story" rows="5" cols="33" style="resize: none; width:100%" required></textarea>
+          </div>
+        </div>
+
+    </section>
+    <footer class="modal-card-foot">
+      <button type="submit" class="button is-link">Modifier</button>
+      <button class="button">Annuler</button>
+    </footer>
+  </div>
+  </form>
+</div>
+<!-- End Modal Modify -->
+
+<div class="modal" id="modal-delete">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+
+    <header class="modal-card-head">
+      <p class="modal-card-title">Confirmation</p>
+      <button class="delete" aria-label="close"></button>
+    </header>
+      <div>
+        <form id="d_product_id" class="box" action="/admin" method="post" th:action="@{/delProduct}">
+          <input type="text" hidden="true" id="del_product_id" name="prod_id">
+            <section class="modal-card-body">
+              <p>Voulez vraiment effacer l'article : <b>REF</b> ?</p>
+            </section>
+            <footer class="modal-card-foot">
+                <button type="submit" class="button is-danger">Effacer</button>
+                  <button type="reset" class="button">Annuler</button>
+            </footer>
+        </form>
+      </div>
+
+  </div>
+</div>
+
+<script src="js/admin/nav.js"></script>
+<script src="js/admin/modify.js"></script>
+
+</body>
+</html>

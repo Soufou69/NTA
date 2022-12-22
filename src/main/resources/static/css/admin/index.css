@@ -1,0 +1,17 @@
+/* Cards */
+
+.card-content .content{
+    text-align: center;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 350px;
+}
+
+.card-image {
+    min-width: 120px;
+    max-width: 150px;
+}

@@ -1,0 +1,12 @@
+.card-content {
+    opacity:0;
+    transition: visibility 0s, opacity 1s linear;
+}
+
+.is-activeCard {
+    opacity: 1;
+}
+
+.card {
+    margin-top: 10px;
+}

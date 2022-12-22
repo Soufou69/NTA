@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Administration : Ajouter</title>
+  <link rel="stylesheet" href="css/admin/bulma/css/bulma.min.css" />
+  <link rel="stylesheet" href="css/admin/style.css" />
+  <link rel="stylesheet" href="css/admin/add.css" />
+</head>
+<body>
+
+<aside th:replace="~{html/admin/sidebar}" ></aside>
+
+<nav>
+  <div class="nav-container">
+    <div class="menu-toggle"><span id="menu-toggle" class="" onclick="showHiddenSideBar()"><img src="img/admin/icons/menu.svg" /></span></div>
+    <div class="user"><p th:text="'Hi '+${user_admin}"></p></div>
+    <div class="back nav-case"><a href="/">Retour au site</a></div>
+    <div class="disconnect nav-case"><a href=""><img src="img/admin/icons/logout.svg" /></a></div>
+  </div>
+</nav>
+
+<div class="contentPage box">
+  <h1 class="title">Ajouter un produit</h1>
+  <hr >
+  <form class="box">
+    <div class="field">
+      <label class="label">Référence du produit</label>
+      <div class="control">
+        <input class="input" type="text" placeholder="Ref" required>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Nom du produit</label>
+      <div class="control">
+        <input class="input" type="text" placeholder="Nom" required>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Type du produit</label>
+      <div class="control">
+        <div class="select" style="width: 100%;">
+          <select style="width: 100%;" required>
+            <option>Choisir un type</option>
+            <option>CG</option>
+            <option>RAM</option>
+            <option>PROC</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Prix unitaire (€)</label>
+      <div class="control">
+        <input class="input" min="0" step="0.01" type="number" placeholder="0" required>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Stock</label>
+      <div class="control">
+        <input class="input" min="0" step="1" type="number" placeholder="0" required>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Lien vers l'image du produit</label>
+      <div class="control">
+        <input class="input" type="text" placeholder="Nom" required>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Description du produit</label>
+      <div class="control">
+        <textarea id="story" name="story" rows="5" cols="33" style="resize: none; width:100%" required></textarea>
+      </div>
+    </div>
+
+    <button class="button is-link">Ajouter !</button>
+  </form>
+</div>
+<script src="js/admin/nav.js"></script>
+</body>
+</html>

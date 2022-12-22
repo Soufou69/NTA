@@ -12,6 +12,7 @@
 
 <div th:replace="~{html/inc/header}"></div>
 <div style="min-height: 950px;" th:switch="${page}">
+    <div th:case="admin"><div th:replace="~{html/admin/indexAdmin}"></div></div>
     <div th:case="account"><div th:replace="~{html/user}"></div></div>
     <div th:case="*"><div th:replace="~{html/accueil}"></div></div>
 </div>
