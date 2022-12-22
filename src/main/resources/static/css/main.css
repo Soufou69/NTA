@@ -11,6 +11,9 @@
 
 body {
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 main {
@@ -142,7 +145,7 @@ main {
 
 /* all cards MUST have the same height or it will looked UGLY*/
 .card {
-    height: 450px !important;
+    height: 650px !important;
 }
 
 /* Index Carousel  */
