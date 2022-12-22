@@ -38,7 +38,7 @@ public class ProductsController {
         List<Produit> list = this.productsService.findAllProduitByType("PROC");
         model.addAttribute("products", list);
         model.addAttribute("product_type", "Processeurs");
-        return "html/products/products2";
+        return "html/products/products";
     }
 
     @GetMapping("/products3")
@@ -46,7 +46,7 @@ public class ProductsController {
         List<Produit> list = this.productsService.findAllProduitByType("RAM");
         model.addAttribute("products", list);
         model.addAttribute("product_type", "Mémoire RAM");
-        return "html/products/products2";
+        return "html/products/products";
     }
 
 }

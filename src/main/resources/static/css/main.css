@@ -184,8 +184,23 @@ main {
     cursor: pointer;
 }
 .carousel-left {
-    left:10%;
+    left: calc((100% - 1000px)/2);
 }
 .carousel-right {
-    right: 10%;
+    right: calc((100% - 1000px)/2);
+}
+
+/* Products page */
+.form-addItem,.col-desc {
+    display: flex;
+    flex-direction: column;
+}
+.form-addItem .qte-selector{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.input-qte{
+    text-align: center;
 }

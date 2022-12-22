@@ -31,4 +31,15 @@ modal.onclick = function() {
        img01.className = "modal-content";
      }, 400);
     
- }       
+ }
+
+ function changeQte(op, idProduct){
+    if(op=='+'){
+        if(parseInt(document.getElementById(idProduct).value)< parseInt(document.getElementById(idProduct).max))
+        document.getElementById(idProduct).value = parseInt(document.getElementById(idProduct).value) +1; 
+    }else if(op=="-"){
+        if(parseInt(document.getElementById(idProduct).value)>1){
+            document.getElementById(idProduct).value = parseInt(document.getElementById(idProduct).value) -1; 
+        }
+    }
+ }
