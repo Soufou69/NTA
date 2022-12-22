@@ -61,4 +61,11 @@ public class UserService {
         this.userDAO.deleteById(idUser);
         return idUser;
     }
+
+    public static boolean checkIfAdmin(User u) {
+        if (u == null) {
+            return false;
+        }
+        return u.isAdmin();
+    }
 }
