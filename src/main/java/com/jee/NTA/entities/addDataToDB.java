@@ -88,7 +88,7 @@ public class addDataToDB {
             while(rs.next()) {
                 count_support++;
             }
-            if(count_support==2) addSupport=false;
+            if(count_support>=2) addSupport=false;
 
             if (!addProduct && !addAdmin && !addSupport) {
                 rs.close();
