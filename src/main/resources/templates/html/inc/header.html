@@ -4,11 +4,30 @@
         <li><a href="/products?type=PROC" style="color:#006fac;">Processeur</a></li>
         <li><a href="/products?type=RAM" style="color:#006fac;">Mémoire RAM</a></li>
       </ul>
+      <ul id="nav-mobile" class="sidenav">
+        <ul class="collapsible">
+            <li>
+              <div class="collapsible-header">Nos produits</div>
+              <div class="collapsible-body">
+                <ul>
+                    <li><a href="/products?type=CG" style="color:#006fac;">Carte Graphique</a></li>
+                    <li><a href="/products?type=PROC" style="color:#006fac;">Processeur</a></li>
+                    <li><a href="/products?type=RAM" style="color:#006fac;">Mémoire RAM</a></li>
+                  </ul>
+              </div>
+            </li>
+          </ul>
+        <li><a href="/account">Mon compte</a></li>
+        <li><a href="/cart">Mon panier</a></li>
+        <li><a href="/form">Contact</a></li>
+        <li th:if="${#servletContext.getAttribute('current_user_isAdmin') == true}"><a href="/admin">Administration</a></li>
+
+    </ul>
     <nav id="head" class="nav-extended">
         <div class="nav-wrapper">
             <a th:href="@{/}" class="brand-logo" style="margin-left: 20px;">L'Ancien TopAchat</a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <a href="#" data-target="nav-mobile" class="sidenav-trigger button-collapse"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
                 <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Nos Produits<i class="material-icons right">arrow_drop_down</i></a></li>
                 <li><a href="/account">Mon compte</a></li>
                 <li><a href="/cart">Mon panier</a></li>

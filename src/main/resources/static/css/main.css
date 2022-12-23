@@ -143,10 +143,6 @@ main {
     }
 }
 
-/* all cards MUST have the same height or it will looked UGLY*/
-.card {
-    height: 650px !important;
-}
 
 /* Index Carousel  */
 .carousel {
@@ -210,4 +206,17 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 923px){
+    .card{
+        height : 450px;
+    }
+}
+
+@media screen and (min-width: 924px){
+    .card{
+        height : 650px;
+    }
 }
