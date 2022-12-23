@@ -204,3 +204,10 @@ main {
 .input-qte{
     text-align: center;
 }
+
+/*Cart page*/
+.btn-cart{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
