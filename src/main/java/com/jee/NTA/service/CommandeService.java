@@ -2,6 +2,7 @@ package com.jee.NTA.service;
 
 import com.jee.NTA.dao.CommandeDao;
 import com.jee.NTA.entities.Commande;
+import com.jee.NTA.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +22,13 @@ public class CommandeService {
     @Transactional
     public List<Commande> findAllCommandes(){
         return this.commandeDAO.findAll();
+    }
+
+    @Transactional
+    public Commande findLastCommandByUserID(String user_id){
+        Optional<Commande> cmd_tmp = this.commandeDAO.findAll().stream().filter(commande -> commande.getUser().getId().equals(user_id)).findFirst();
+        if(!cmd_tmp.isEmpty()) return cmd_tmp.get();
+        return null;
     }
 
     @Transactional
