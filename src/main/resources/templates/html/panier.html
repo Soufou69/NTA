@@ -1,49 +1,58 @@
-<html>
-    <head>
-        <title>Votre panier</title>
-    </head>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Mon Panier</title>
+    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
     <body>
-
-        <form method="post" action="">
-            <table class="responsive-table" style="width: 50%; margin-top: 150px; margin-bottom: 300px; margin-left: 150px;">
-                <tr>
-                    <td colspan="4">Votre panier</td>
-                </tr>
-                <tr>
-                    <td style="padding: 5px;">Libellé</td>
-                    <td style="padding: 25px;">Quantité</td>
-                    <td style="padding: 25px;">Prix Unitaire</td>
-                    <td style="padding: 25px;">Action</td>
-                </tr>
-    <!-- <?php for ($i=0 ;$i < $nbArticles ; $i++): ?> -->
-    <tr>
-        <td style="padding: 25px;">LIBELLE PRODUIT</td>
-        <td style="padding: 25px;"><input readonly type="text" size="4" value="1000" name="q[]"></td>
-        <td style="padding: 25px;">1000€</td>
-        <td style="padding: 25px;">
-<!--            <a type="submit" href="index.php?page=panier?action=suppression&l= ||| <?//=$_SESSION['panier']['libelleProduit'][$i]?>XX</a>-->
-            <button style="background-color: #006fac;" class="btn-floating waves-effect waves-light" name="delete_elmt">
-                <i class="material-icons right">delete</i>
-                <input type="hidden" name="delete_elmt_id" value=""/>
-            </button>
-        </td>
-    </tr>
-    <tr><td colspan="2"> </td>
-        <td style="padding: 25px;" colspan="2">Total  :  100000€</td>
-    </tr>
-    <tr>
-        <td colspan="4">
-            <button name="refresh_basket" style="background-color: #006fac;" class="btn waves-effect waves-light">Rafraichir
-            </button>
-        </td>
-        <td colspan="4">
-            <button name="delete_basket" style="background-color: #006fac;" class="btn waves-effect waves-light">Supprimer le panier
-            </button>
-        </td>
-
-    </tr>
-
-    </table>
-    </form>
+        <div th:replace="~{html/inc/header}"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col s12">
+                        <h3>Mon panier</h3>
+                        <hr>  
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                        <table class="striped highlight centered responsive-table">
+                            <thead>
+                            <tr>
+                                <th>Ref</th>
+                                <th>Nom</th>
+                                <th>Qte</th>
+                                <th>Prix</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                    
+                            <tbody>
+                            <tr>
+                                <td>Ref</td>
+                                <td>PRODUIT</td>
+                                <td>1</td>
+                                <td><b>1000</b>€</td>
+                                <td><a class="btn" style="background-color: #006fac;"><i class="material-icons">delete</i></a></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                        <p>Total :<b>0</b>€</p>
+                        <br><hr>
+                        <div class="btn-cart">
+                            <a class="btn" style="background-color: #006fac;">Vider le panier</a>
+                            <a class="btn" style="background-color: #006fac;">Commander !</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div th:replace="~{html/inc/footer}"></div>
     </body>
 </html>
