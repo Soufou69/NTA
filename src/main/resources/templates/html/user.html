@@ -126,7 +126,7 @@
             </div>
             <div class="col">
                 <div style="padding: 6px;">
-                    <p style="color: #006fac;">Commande n°XXX</p>
+                    <p th:text="'Commande ID : ' + ${#servletContext.getAttribute('last_command')}" style="color: #006fac;"></p>
                 </div>
             </div>
         </div>

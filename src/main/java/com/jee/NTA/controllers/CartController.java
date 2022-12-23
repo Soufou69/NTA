@@ -100,7 +100,7 @@ public class CartController {
             }
         });
 
-//        current_basket.setProduits(list_products);
+
         current_basket.setProduitQuantite(ref.total_products_qty);
         current_basket.setProduits(list_products);
         this.commandeService.saveCommande(current_basket);

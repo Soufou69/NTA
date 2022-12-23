@@ -12,12 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.ServletContext;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.UUID;
 
-import static com.jee.NTA.entities.addDataToDB.ConnectToDB;
 
 @Controller
 public class ContactFormController {
@@ -46,7 +41,7 @@ public class ContactFormController {
     public String submitForm(@ModelAttribute ContactForm cf, Model model) throws Exception {
         model.addAttribute("form", cf);
         this.contactMsgService.saveMsg(cf);
-        return "test_form";
+        return "html/form";
     }
 
 
