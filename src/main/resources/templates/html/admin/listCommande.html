@@ -21,8 +21,7 @@
 <div class="contentPage box">
   <div class="card" th:each="cmd : ${commands}">
     <header class="card-header">
-      <p class="card-header-title">
-        #001
+      <p class="card-header-title" th:text="'Commande de '+${cmd.getUser().getName()}">
       </p>
       <button class="card-header-icon" aria-label="more options">
                     <span class="icon">
