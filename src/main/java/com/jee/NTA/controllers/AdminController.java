@@ -175,5 +175,21 @@ public class AdminController {
 
     }
 
+    @RequestMapping( "/logoutAdmin")
+    String logoutAdmin(Model model) {
+        User current_user = (User) servletContext.getAttribute("logged_in_user");
+        if (current_user == null) {
+            servletContext.setAttribute("user_logged", false);
+        } else {
+            servletContext.setAttribute("user_logged", false);
+            servletContext.removeAttribute("logged_in_user");
+            servletContext.setAttribute("current_user_isAdmin", false);
+            model.addAttribute("user_register", new User());
+
+
+        }
+        return "html/user";
+    }
+
 
 }
