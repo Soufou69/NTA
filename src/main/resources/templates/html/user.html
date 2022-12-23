@@ -78,7 +78,7 @@
             <div class="row">
                 <div class="input-field col s12" style=" padding: 10px;">
                     <input th:field="*{password}" name="register_pwd" type="password" class="validate">
-                    <label for="register_pwd">Password</label>
+                    <label for="register_pwd">Mot de passe</label>
                 </div>
             </div>
             <div th:if="${#servletContext.getAttribute('error') != null}" class="row" >
@@ -132,7 +132,7 @@
         </div>
     <div class="row center-align">
         <div class="col">
-            <form action="" method="post">
+            <form action="/" method="post" th:action="@{/logout}">
                 <input  type="hidden" name="log_out">
 
             <button style="background-color: #006fac;" class="btn waves-effect waves-light" type="submit" name="action">SE DÉCONNECTER

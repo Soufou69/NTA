@@ -80,7 +80,7 @@ public class addDataToDB {
             while(rs.next()) {
                 count_admin++;
             }
-            if(count_admin==1) addAdmin=false;
+            if(count_admin>1) addAdmin=false;
 
             pstmt = con.prepareStatement("SELECT * FROM nta.contact_msg;");
             rs = pstmt.executeQuery();
