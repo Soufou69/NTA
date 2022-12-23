@@ -72,23 +72,23 @@ public class addDataToDB {
             while(rs.next()) {
                 count_products++;
             }
-            if(count_products==15) addProduct=false;
+            if(count_products>=15) addProduct=false;
 
-            pstmt = con.prepareStatement("SELECT * FROM nta.user WHERE is_admin=1;");
+            pstmt = con.prepareStatement("SELECT * FROM user WHERE is_admin=1;");
             rs = pstmt.executeQuery();
             int count_admin = 0;
             while(rs.next()) {
                 count_admin++;
             }
-            if(count_admin==1) addAdmin=false;
+            if(count_admin>=1) addAdmin=false;
 
-            pstmt = con.prepareStatement("SELECT * FROM nta.contact_msg;");
+            pstmt = con.prepareStatement("SELECT * FROM contact_msg;");
             rs = pstmt.executeQuery();
             int count_support = 0;
             while(rs.next()) {
                 count_support++;
             }
-            if(count_support==2) addSupport=false;
+            if(count_support>=2) addSupport=false;
 
             if (!addProduct && !addAdmin && !addSupport) {
                 rs.close();
@@ -115,7 +115,7 @@ public class addDataToDB {
             stockCG.forEach(o -> {
                 JSONObject cg = (JSONObject) o;
                 try {
-                    PreparedStatement pstmt = con.prepareStatement("INSERT INTO nta.produit values (?, ?, ?, ?, ?, ?, ? , ?)");
+                    PreparedStatement pstmt = con.prepareStatement("INSERT INTO produit values (?, ?, ?, ?, ?, ?, ? , ?)");
                     pstmt.setString(1, (String) cg.get("id"));
                     pstmt.setString(3, (String) cg.get("img_src"));
                     pstmt.setDouble(4, (Double) cg.get("price"));
@@ -147,7 +147,7 @@ public class addDataToDB {
             stockPROC.forEach(o -> {
                 JSONObject proc = (JSONObject) o;
                 try {
-                    PreparedStatement pstmt = con.prepareStatement("INSERT INTO nta.produit values (?, ?, ?, ?, ?, ?, ? , ?)");
+                    PreparedStatement pstmt = con.prepareStatement("INSERT INTO produit values (?, ?, ?, ?, ?, ?, ? , ?)");
                     pstmt.setString(1, (String) proc.get("id"));
                     pstmt.setString(3, (String) proc.get("img_src"));
                     pstmt.setDouble(4, (Double) proc.get("price"));
@@ -179,7 +179,7 @@ public class addDataToDB {
             stockRAM.forEach(o -> {
                 JSONObject ram = (JSONObject) o;
                 try {
-                    PreparedStatement pstmt = con.prepareStatement("INSERT INTO nta.produit values (?, ?, ?, ?, ?, ?, ? , ?)");
+                    PreparedStatement pstmt = con.prepareStatement("INSERT INTO produit values (?, ?, ?, ?, ?, ?, ? , ?)");
                     pstmt.setString(1, (String) ram.get("id"));
                     pstmt.setString(3, (String) ram.get("img_src"));
                     pstmt.setDouble(4, (Double) ram.get("price"));
@@ -218,7 +218,7 @@ public class addDataToDB {
             admin.forEach(o -> {
                 JSONObject ad = (JSONObject) o;
                 try {
-                    PreparedStatement pstmt = con.prepareStatement("INSERT INTO nta.user values (?, ?, ?, ?, ?)");
+                    PreparedStatement pstmt = con.prepareStatement("INSERT INTO user values (?, ?, ?, ?, ?)");
                     pstmt.setString(1, (String) ad.get("id"));
                     boolean isAdmin =(boolean) ad.get("is_admin");
                     byte tmp=(byte) (isAdmin ? 1 : 0);
@@ -246,7 +246,7 @@ public class addDataToDB {
             supportsObject.forEach(o -> {
                 JSONObject msg = (JSONObject) o;
                 try {
-                    PreparedStatement pstmt = con.prepareStatement("INSERT INTO nta.contact_msg values (?, ?, ?, ?, ?,?,?)");
+                    PreparedStatement pstmt = con.prepareStatement("INSERT INTO contact_msg values (?, ?, ?, ?, ?,?,?)");
                     pstmt.setString(1, (String) msg.get("id"));
                     pstmt.setString(2,(String) msg.get("contenu_mail"));
                     pstmt.setString(3, (String) msg.get("date_naissance"));

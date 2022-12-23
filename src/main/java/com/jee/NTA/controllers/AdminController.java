@@ -1,9 +1,6 @@
 package com.jee.NTA.controllers;
 
-import com.jee.NTA.entities.ContactForm;
-import com.jee.NTA.entities.ContactMsg;
-import com.jee.NTA.entities.Produit;
-import com.jee.NTA.entities.User;
+import com.jee.NTA.entities.*;
 import com.jee.NTA.service.CommandeService;
 import com.jee.NTA.service.ContactMsgService;
 import com.jee.NTA.service.ProduitService;
@@ -14,8 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletContext;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Controller
 public class AdminController {
@@ -98,13 +95,48 @@ public class AdminController {
     String listProduct(Model model) {
         User current_user = (User) servletContext.getAttribute("logged_in_user");
 
+
         if (UserService.checkIfAdmin(current_user)) {
+            List<Commande> commands = this.commandeService.findAllCommandes();
+            Map<String,Map<Produit,Long>> quantite = new HashMap<>();
+            Map<String,Float> priceTotal= new HashMap<>();
+            float price=0;
+            for(Commande c : commands){
+                List<Produit> produits =c.getProduits();
+                for(Produit p : produits){
+                    price = price + p.getPrice();
+                }
+                priceTotal.put(c.getId(),price);
+                quantite.put(c.getId(),produits.stream().collect(Collectors.groupingBy(produit -> produit, Collectors.counting())));
+                System.out.println(quantite);
+                price =0;
+            }
+
+
             model.addAttribute("user_admin", current_user.getName());
+            model.addAttribute("commands", commands);
+            model.addAttribute("quantite", quantite);
+            model.addAttribute("priceTotal", priceTotal);
             return "html/admin/listCommande";
         } else {
             return "index";
         }
     }
+
+    String nameUser(String idUserCmd){
+        Optional<User> user = this.userService.findUserById(idUserCmd);
+        return user.get().getName();
+    }
+
+
+
+
+
+
+
+
+
+
     @GetMapping(value = "/modifProduct")
     String modifProduct(Model model) {
         User current_user = (User) servletContext.getAttribute("logged_in_user");

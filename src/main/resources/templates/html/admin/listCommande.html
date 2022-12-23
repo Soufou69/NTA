@@ -19,7 +19,7 @@
 </nav>
 
 <div class="contentPage box">
-  <div class="card">
+  <div class="card" th:each="cmd : ${commands}">
     <header class="card-header">
       <p class="card-header-title">
         #001
@@ -32,8 +32,8 @@
     </header>
     <div class="card-content is-hidden">
       <div class="content">
-        Commande de <b>"NomUser"</b><br>
-        Montant total : <b>xxxxx€</b>
+        Commande de <b th:text="${cmd.getUser().getName()}"></b><br>
+        Montant total : <b th:text="${priceTotal.get(cmd.getId())}+'€'"></b>
         <br>
         <br>
         <table class="table is-striped is-bordered is-narrow is-hoverable is-fullwidth">
@@ -47,21 +47,13 @@
             <td><b>Prix Total</b></td>
           </tr>
           </thead>
-          <tr>
-            <td>#1</td>
-            <td>RTX 3090</td>
-            <td>CG</td>
-            <td>1</td>
-            <td>1000€</td>
-            <td>1000€</td>
-          </tr>
-          <tr>
-            <td>#2</td>
-            <td>I5 12600K</td>
-            <td>CPU</td>
-            <td>2</td>
-            <td>300€</td>
-            <td>600€</td>
+          <tr th:each="p : ${quantite.get(cmd.getId())}">
+            <td th:text="${p.key.getRef()}"></td>
+            <td th:text="${p.key.getTitle()}"></td>
+            <td th:text="${p.key.getType()}"></td>
+            <td th:text="${p.value}"></td>
+            <td th:text="${p.key.getPrice()}"></td>
+            <td th:text="${p.key.getPrice()*p.value}+'€'"></td>
           </tr>
         </table>
       </div>
