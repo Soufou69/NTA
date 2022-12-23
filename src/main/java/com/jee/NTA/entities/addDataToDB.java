@@ -3,12 +3,15 @@ package com.jee.NTA.entities;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PropertiesLoaderUtils;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.*;
-
+import java.util.Properties;
 
 
 // THIS CLASS WILL EXTRACT DATA FROM JSON FILE (DB BACKUP) TO POPULATE DB
@@ -18,8 +21,9 @@ public class addDataToDB {
         //Registering the Driver
         DriverManager.registerDriver(new com.mysql.jdbc.Driver());
         //Getting the connection
-        String mysqlUrl = "jdbc:mysql://localhost/nta";
-        Connection con = DriverManager.getConnection(mysqlUrl, "corentin", "corentin");
+        Resource resource = new ClassPathResource("/application.properties");
+        Properties props = PropertiesLoaderUtils.loadProperties(resource);
+        Connection con = DriverManager.getConnection(props.getProperty("spring.datasource.url")+"&characterEncoding=utf8", props.getProperty("spring.datasource.username"), props.getProperty("spring.datasource.password"));
         System.out.println("Connection established......");
         return con;
     }
