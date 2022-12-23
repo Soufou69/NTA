@@ -1,5 +1,36 @@
 
 {
+  "users" : {
+    "admin": [
+      {
+        "id" : "c32b49d9-eec7-40e5-8af6-92cf5c6f285f",
+        "is_admin" : true,
+        "mail" : "admin@admin.fr",
+        "name" : "admin",
+        "password" : "$2a$10$istnZTahEuta9KqmOelHjeNYLbFARtyqTRY9ZNFgq7uH4ratttFJq"
+      }
+    ]
+  },
+  "support": [
+    {
+      "id": "a9b9d554-b738-4be5-8f96-7e5a3c45005d",
+      "contenu_mail": "il manque un produit dans mon coli",
+      "date_naissance":"1997-07-09" ,
+      "email": "pierre@sfr.fr",
+      "genre": "homme",
+      "name": "Pierre",
+      "sujet_mail" :"Erreur Commande"
+    },
+    {
+      "id": "895f65d0-e1ab-4f6e-aa7b-16d328d3f0b1",
+      "contenu_mail": "Message pour tester le bouton supprimer",
+      "date_naissance":"2000-06-08" ,
+      "email": "paul@gmail.com",
+      "genre": "homme",
+      "name": "Paul",
+      "sujet_mail" :"Test Bouton supprimer"
+    }
+  ],
   "products": {
       "stockCG": [
     {
