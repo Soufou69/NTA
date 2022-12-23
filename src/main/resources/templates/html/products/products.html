@@ -48,14 +48,16 @@
                             <div class="col" style="margin-top: 25px;">
                                 <label th:text="${product.stock} + 'pièce(s) en stock !'" id="product_IdItemHERE_price" class="price_label" style="color: #006fac; font-size: 20px; font-weight: bold;"></label>
                             </div>
-                        <form class="form-addItem" name="basket" action="" method="post">
+                        <form class="form-addItem" name="basket" action="/" method="post" th:action="@{/addToBasket}">
                         <div class="qte-selector">
                             <div>
                                 <i th:attr="onclick=|changeQte('-','product_${product.id}_quantity')|" style="border: black 1px solid; border-radius: 6px; font-size: 15px;" class="material-icons">remove</i>
                             </div>
                                 <div class="input-field col" style="width: 100px;">
-                                <input name="item_id" th:value="${product.title}" style="display: none;" />
+                                <input name="item_id" th:value="${product.id}" style="display: none;" />
+                                <input name="item_type" th:value="${product.type}" style="display: none;" />
                                 <input name="item_price" th:value="${product.price}" style="display: none;" />
+                                <input name="item_name" th:value="${product.title}" style="display: none;" />
                                 <input name="number_of_item" value="1" class="input-qte" th:id="${'product_'+product.id+'_quantity'}" min="1" th:max="${product.stock}" type="number" />
                             </div>
                         <div>

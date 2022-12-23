@@ -31,24 +31,34 @@
                             </thead>
                     
                             <tbody>
-                            <tr>
-                                <td>Ref</td>
-                                <td>PRODUIT</td>
-                                <td>1</td>
-                                <td><b>1000</b>€</td>
-                                <td><a class="btn" style="background-color: #006fac;"><i class="material-icons">delete</i></a></td>
+                            <tr th:each="b : ${basket}">
+                                <form id="delete_form" action="#" method="post" th:action="@{/deleteItem}">
+                                    <input name="item_id" th:value="${b.key}" style="display: none;" />
+                                    <td th:text="'Réf : ' + ${b.key}"></td>
+                                    <td th:text="${#strings.arraySplit(b.value,'@')[0]}"></td>
+                                    <td th:text="${#strings.arraySplit(b.value,'@')[2]}"></td>
+                                    <td><b th:text="${#strings.arraySplit(b.value,'@')[1]}"></b>€</td>
+                                    <td><a class="btn" onclick="document.getElementById('delete_form').submit()" style="background-color: #006fac;"><i class="material-icons">delete</i></a></td>
+                                </form>
                             </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
+                <div>
+                    <form id="wipe_basket" action="#" method="get" th:action="@{/wipeBasket}">
+                    </form>
+
+                    <form id="pass_basket" action="#" method="get" th:action="@{/passBasket}">
+                    </form>
+                </div>
                 <div class="row">
                     <div class="col s12">
-                        <p>Total :<b>0</b>€</p>
+                        <p>Total : <b th:text="${basket_total}"></b>€</p>
                         <br><hr>
                         <div class="btn-cart">
-                            <a class="btn" style="background-color: #006fac;">Vider le panier</a>
-                            <a class="btn" style="background-color: #006fac;">Commander !</a>
+                            <a class="btn" onclick="document.getElementById('wipe_basket').submit()" style="background-color: #006fac;">Vider le panier</a>
+                            <a class="btn" onclick="document.getElementById('pass_basket').submit()" style="background-color: #006fac;">Commander !</a>
                         </div>
                     </div>
                 </div>
