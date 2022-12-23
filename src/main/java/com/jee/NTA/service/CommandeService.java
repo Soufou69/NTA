@@ -27,8 +27,12 @@ public class CommandeService {
     @Transactional
     public Commande findLastCommandByUserID(String user_id){
         Optional<Commande> cmd_tmp = this.commandeDAO.findAll().stream().filter(commande -> commande.getUser().getId().equals(user_id)).findFirst();
-        if(!cmd_tmp.isEmpty()) return cmd_tmp.get();
-        return null;
+        if(!cmd_tmp.isEmpty()) {
+            return cmd_tmp.get();
+        } else {
+            return null;
+
+        }
     }
 
     @Transactional

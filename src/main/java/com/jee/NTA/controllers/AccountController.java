@@ -39,7 +39,6 @@ public class AccountController {
             User current_user = (User) servletContext.getAttribute("logged_in_user");
 
             Commande last_command = this.commandeService.findLastCommandByUserID(current_user.getId());
-            System.out.println(last_command.getId());
             if (last_command == null) {
                 servletContext.setAttribute("last_command", "Pas de dernière commande trouvé !");
             } else {
@@ -84,6 +83,7 @@ public class AccountController {
                 servletContext.setAttribute("current_user_isAdmin", false);
             }
         }
+        servletContext.setAttribute("last_command", "Pas de dernière commande trouvé !");
         return account(model);
     }
 
