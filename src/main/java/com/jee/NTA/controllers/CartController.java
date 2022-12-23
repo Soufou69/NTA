@@ -86,19 +86,23 @@ public class CartController {
         current_basket.setStatus(0);
         current_basket.setId(uuidAsString);
         current_basket.setUser(current_user);
-        List<Optional<Produit>> list_products = new LinkedList<>();
+        List<Produit> list_products = new LinkedList<>();
         var ref = new Object() {
             int total_products_qty = 0;
         };
 
         user_basket.forEach((s, o) -> {
             String[] tmp = o.toString().split("@");
+            int quantiteTmp =Integer.parseInt(tmp[2]);
             ref.total_products_qty += Integer.parseInt(tmp[2]);
-            list_products.add(this.produitService.findProduitById(s));
+            for(int i=0; i<quantiteTmp;i++){
+                list_products.add(this.produitService.findProduitById(s).get());
+            }
         });
 
 //        current_basket.setProduits(list_products);
         current_basket.setProduitQuantite(ref.total_products_qty);
+        current_basket.setProduits(list_products);
         this.commandeService.saveCommande(current_basket);
 
         servletContext.setAttribute("user_basket", new HashMap<>());
