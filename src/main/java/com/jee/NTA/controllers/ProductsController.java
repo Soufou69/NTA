@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -26,27 +28,21 @@ public class ProductsController {
 
 
     @GetMapping("/products")
-    public String getProducts1(Model model) throws Exception {
-        List<Produit> list = this.productsService.findAllProduitByType("CG");
+    public String getProducts1(Model model, @RequestParam String type) throws Exception {
+        System.out.println(type);
+        String typeP;
+        List<Produit> list = this.productsService.findAllProduitByType(type);
         model.addAttribute("products", list);
-        model.addAttribute("product_type", "Cartes Graphiques");
+        if(type.equals("CG")){
+            typeP="Cartes Graphiques";
+        }else if(type.equals("PROC")){
+            typeP="Processeurs";
+        }else{
+            typeP="Mémoire RAM";
+        }
+        model.addAttribute("product_type", typeP);
         return "html/products/products";
     }
 
-    @GetMapping("/products2")
-    public String getProducts2(Model model) throws Exception {
-        List<Produit> list = this.productsService.findAllProduitByType("PROC");
-        model.addAttribute("products", list);
-        model.addAttribute("product_type", "Processeurs");
-        return "html/products/products";
-    }
-
-    @GetMapping("/products3")
-    public String getProducts3(Model model) throws Exception {
-        List<Produit> list = this.productsService.findAllProduitByType("RAM");
-        model.addAttribute("products", list);
-        model.addAttribute("product_type", "Mémoire RAM");
-        return "html/products/products";
-    }
 
 }
