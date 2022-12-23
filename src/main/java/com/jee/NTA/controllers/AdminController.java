@@ -11,13 +11,11 @@ import com.jee.NTA.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletContext;
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 public class AdminController {
@@ -73,18 +71,36 @@ public class AdminController {
 
         if (UserService.checkIfAdmin(current_user)) {
             model.addAttribute("user_admin", current_user.getName());
+            model.addAttribute("product", new Produit());
             return "html/admin/addProduct";
         } else {
             return "index";
         }
     }
+    @PostMapping(value = "/addProduct")
+    String addNewProduct(@ModelAttribute Produit newProduct, Model model) {
+          User current_user = (User) servletContext.getAttribute("logged_in_user");
+
+        if (UserService.checkIfAdmin(current_user)) {
+            UUID uuid = UUID.randomUUID();
+            newProduct.setId(uuid.toString());
+            this.produitService.saveProduit(newProduct);
+            model.addAttribute("product", new Produit());
+            return "html/admin/addProduct";
+
+        } else {
+            return "index";
+        }
+    }
+
+
     @GetMapping(value = "/commands")
     String listProduct(Model model) {
         User current_user = (User) servletContext.getAttribute("logged_in_user");
 
         if (UserService.checkIfAdmin(current_user)) {
             model.addAttribute("user_admin", current_user.getName());
-            return "html/admin/listCommands";
+            return "html/admin/listCommande";
         } else {
             return "index";
         }

@@ -22,18 +22,18 @@
 <div class="contentPage box">
   <h1 class="title">Ajouter un produit</h1>
   <hr >
-  <form class="box">
+  <form class="box" action="/admin" method="post" th:action="@{/addProduct}" th:object="${product}">
     <div class="field">
       <label class="label">Référence du produit</label>
       <div class="control">
-        <input class="input" type="text" placeholder="Ref" required>
+        <input class="input" type="text" placeholder="Ref" required th:field="*{ref}" >
       </div>
     </div>
 
     <div class="field">
       <label class="label">Nom du produit</label>
       <div class="control">
-        <input class="input" type="text" placeholder="Nom" required>
+        <input class="input" type="text" placeholder="Nom" required th:field="*{title}">
       </div>
     </div>
 
@@ -41,11 +41,11 @@
       <label class="label">Type du produit</label>
       <div class="control">
         <div class="select" style="width: 100%;">
-          <select style="width: 100%;" required>
-            <option>Choisir un type</option>
-            <option>CG</option>
-            <option>RAM</option>
-            <option>PROC</option>
+          <select style="width: 100%;" required th:field="*{type}">
+            <option value="">Choisir un type</option>
+            <option th:value="CG">CG</option>
+            <option th:value="RAM">RAM</option>
+            <option th:value="PROC">PROC</option>
           </select>
         </div>
       </div>
@@ -54,28 +54,28 @@
     <div class="field">
       <label class="label">Prix unitaire (€)</label>
       <div class="control">
-        <input class="input" min="0" step="0.01" type="number" placeholder="0" required>
+        <input class="input" min="0" step="0.01" type="number" placeholder="0" required th:field="*{price}">
       </div>
     </div>
 
     <div class="field">
       <label class="label">Stock</label>
       <div class="control">
-        <input class="input" min="0" step="1" type="number" placeholder="0" required>
+        <input class="input" min="0" step="1" type="number" placeholder="0" required th:field="*{stock}">
       </div>
     </div>
 
     <div class="field">
       <label class="label">Lien vers l'image du produit</label>
       <div class="control">
-        <input class="input" type="text" placeholder="Nom" required>
+        <input class="input" type="text" placeholder="Nom" required th:field="*{imgSrc}">
       </div>
     </div>
 
     <div class="field">
       <label class="label">Description du produit</label>
       <div class="control">
-        <textarea id="story" name="story" rows="5" cols="33" style="resize: none; width:100%" required></textarea>
+        <textarea id="story" name="story" rows="5" cols="33" style="resize: none; width:100%" required th:field="*{desc}"></textarea>
       </div>
     </div>
 
