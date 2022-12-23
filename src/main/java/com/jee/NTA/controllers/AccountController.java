@@ -67,6 +67,11 @@ public class AccountController {
             model.addAttribute("user_register", new User());
             servletContext.setAttribute("user_logged", true);
             servletContext.setAttribute("logged_in_user", current_user);
+            if (UserService.checkIfAdmin(current_user)) {
+                servletContext.setAttribute("current_user_isAdmin", true);
+            } else {
+                servletContext.setAttribute("current_user_isAdmin", false);
+            }
         }
         return "html/user";
     }
